@@ -1502,19 +1502,25 @@ canvas#yourChart {
     left: -75px;
 }
 .single-service-box {
-    right: 123px;
+    right: 83px;
+}
+.single-service-box.two {
+    right: 83px;
 }
 .single-service-box.three {
-    right: 107px;
+    right: 83px;
 }
 .shape18 {
     display: none;
 }
 .single-service-box-two {
-    left: 90px;
+    left: 78px;
+}
+.single-service-box-two.five {
+    left: 78px;
 }
 .single-service-box-two.six {
-    left: 100px;
+    left: 78px;
 }
 .service-section.pb-120 {
     padding-bottom: 63px;
