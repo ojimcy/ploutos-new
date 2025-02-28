@@ -140,3 +140,8 @@ a.meanmenu-reveal{display:none}
 	position: absolute;
 	top: 18px;
 }
+
+.mean-container .mean-bar::after {
+  color: #fff;
+  content: "PLOUTOS Mainnet";
+}
