@@ -124,6 +124,7 @@ const translations = {
     ogDescription: 'Revolutionizing the use of Cryptocurrency in the world',
     tradeMetaDescription:
       'Trade digital assets seamlessly on Ploutos. Buy, sell, and swap cryptocurrencies with ease.',
+    whitepaperUrl: 'https://ploutoslabs.gitbook.io/ploutos-white-paper',
   },
   fr: {
     siteTitle:
@@ -255,15 +256,26 @@ const translations = {
       "Révolutionnant l'utilisation de la Cryptomonnaie dans le monde",
     tradeMetaDescription:
       'Trade digital assets seamlessly on Ploutos. Buy, sell, and swap cryptocurrencies with ease.',
+    whitepaperUrl:
+      'https://ploutoslabs.gitbook.io/ploutos-white-paper/livre-blanc-de-ploutos',
   },
 };
 
 function setLanguage(lang) {
+  document.documentElement.lang = lang; // Track current language
   document.querySelectorAll('[data-translate]').forEach((element) => {
     const key = element.getAttribute('data-translate');
-    element.textContent = translations[lang][key];
+    if (translations[lang][key]) {
+      element.textContent = translations[lang][key];
+    }
   });
 }
 
 // Set default language
 setLanguage('en');
+
+// Add function to handle whitepaper opening
+function openWhitepaper() {
+  const currentLang = document.documentElement.lang || 'en';
+  window.open(translations[currentLang].whitepaperUrl, '_blank');
+}
