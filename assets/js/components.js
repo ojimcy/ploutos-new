@@ -315,11 +315,63 @@ const commonScriptsInit = `
     </script>
 `;
 
+// Function to get the correct base path
+function getBasePath() {
+    const currentPath = window.location.pathname;
+    return currentPath === '/' || currentPath.endsWith('/index.html') ? './' : './';
+}
+
+// Function to update navigation links based on current page
+function updateNavigationLinks() {
+    const currentPath = window.location.pathname;
+    const isHomePage = currentPath === '/' || currentPath.endsWith('/index.html');
+    
+    // Update logo links
+    const logoLinks = document.querySelectorAll('.header-logo a');
+    logoLinks.forEach(link => {
+        link.href = isHomePage ? '#home' : './index.html';
+    });
+    
+    // Update navigation links
+    const homeLink = document.querySelector('a[href="/#home"]');
+    if (homeLink) {
+        homeLink.href = isHomePage ? '#home' : './index.html';
+    }
+    
+    const aboutLink = document.querySelector('a[href="/#about"]');
+    if (aboutLink) {
+        aboutLink.href = isHomePage ? '#about' : './index.html#about';
+    }
+    
+    const faqLink = document.querySelector('a[href="/#faq"]');
+    if (faqLink) {
+        faqLink.href = isHomePage ? '#faq' : './index.html#faq';
+    }
+    
+    // Update mobile menu links as well
+    const mobileHomeLink = document.querySelector('.mobile-menu a[href="/#home"]');
+    if (mobileHomeLink) {
+        mobileHomeLink.href = isHomePage ? '#home' : './index.html';
+    }
+    
+    const mobileAboutLink = document.querySelector('.mobile-menu a[href="/#about"]');
+    if (mobileAboutLink) {
+        mobileAboutLink.href = isHomePage ? '#about' : './index.html#about';
+    }
+    
+    const mobileFaqLink = document.querySelector('.mobile-menu a[href="/#faq"]');
+    if (mobileFaqLink) {
+        mobileFaqLink.href = isHomePage ? '#faq' : './index.html#faq';
+    }
+}
+
 // Function to load header
 function loadHeader() {
     const headerContainer = document.getElementById('header-container');
     if (headerContainer) {
         headerContainer.innerHTML = headerHTML;
+        // Update navigation links after loading
+        setTimeout(updateNavigationLinks, 10);
     }
 }
 
