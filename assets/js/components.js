@@ -18,6 +18,7 @@ const headerHTML = `
                             <ul class="nav_scroll">
                                 <li><a href="/#home" data-translate="home">Home</a></li>
                                 <li><a href="/#about" data-translate="about">About</a></li>
+                                <li><a href="/#virtual-cards" data-translate="virtualCards">Virtual Cards</a></li>
                                 <li><a href="/#faq" data-translate="faq">FAQ</a></li>
                                 <li>
                                     <a href="https://app.ploutoslabs.io" data-translate="airdrop">Airdrop</a>
@@ -60,6 +61,7 @@ const headerHTML = `
                 <ul class="nav_scroll">
                     <li><a href="/#home" data-translate="home">Home</a></li>
                     <li><a href="/#about" data-translate="about">About</a></li>
+                    <li><a href="/#virtual-cards" data-translate="virtualCards">Virtual Cards</a></li>
                     <li><a href="/#faq" data-translate="faq">FAQ</a></li>
                     <li>
                         <a href="https://app.ploutoslabs.io" data-translate="airdrop">Airdrop</a>
@@ -325,40 +327,40 @@ function getBasePath() {
 function updateNavigationLinks() {
     const currentPath = window.location.pathname;
     const isHomePage = currentPath === '/' || currentPath.endsWith('/index.html');
-    
+
     // Update logo links
     const logoLinks = document.querySelectorAll('.header-logo a');
     logoLinks.forEach(link => {
         link.href = isHomePage ? '#home' : './index.html';
     });
-    
+
     // Update navigation links
     const homeLink = document.querySelector('a[href="/#home"]');
     if (homeLink) {
         homeLink.href = isHomePage ? '#home' : './index.html';
     }
-    
+
     const aboutLink = document.querySelector('a[href="/#about"]');
     if (aboutLink) {
         aboutLink.href = isHomePage ? '#about' : './index.html#about';
     }
-    
+
     const faqLink = document.querySelector('a[href="/#faq"]');
     if (faqLink) {
         faqLink.href = isHomePage ? '#faq' : './index.html#faq';
     }
-    
+
     // Update mobile menu links as well
     const mobileHomeLink = document.querySelector('.mobile-menu a[href="/#home"]');
     if (mobileHomeLink) {
         mobileHomeLink.href = isHomePage ? '#home' : './index.html';
     }
-    
+
     const mobileAboutLink = document.querySelector('.mobile-menu a[href="/#about"]');
     if (mobileAboutLink) {
         mobileAboutLink.href = isHomePage ? '#about' : './index.html#about';
     }
-    
+
     const mobileFaqLink = document.querySelector('.mobile-menu a[href="/#faq"]');
     if (mobileFaqLink) {
         mobileFaqLink.href = isHomePage ? '#faq' : './index.html#faq';
@@ -384,7 +386,7 @@ function loadFooter() {
 }
 
 // Initialize components when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     loadHeader();
     loadFooter();
 });
