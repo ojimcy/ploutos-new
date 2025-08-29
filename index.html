@@ -586,7 +586,8 @@
             <div class="stats-content">
               <h4 data-translate="joinThousands">Join Thousands of Users</h4>
               <div class="sales-counter">
-                <span class="counter-number" id="total-cards-sold" data-translate="totalCardsSoldValue">12,450</span>
+                <span class="counter-number" id="total-cards-sold"
+                  data-translate="totalCardsSoldValue">Loading...</span>
                 <span class="counter-label" data-translate="cardsSoldLabel">Cards Sold</span>
               </div>
               <p data-translate="cardsSoldDescription">
@@ -820,8 +821,9 @@
             </div>
 
             <div class="app-download-buttons d-flex align-items-center flex-wrap mt-40">
-              <div class="download-btn mr-20 mb-20">
-                <a href="#" class="app-store-btn d-flex align-items-center">
+              <div class="download-btn mr-20 mb-20 position-relative">
+                <a href="#" class="app-store-btn d-flex align-items-center" data-app-status="pending"
+                  data-app-platform="ios">
                   <div class="app-btn-icon">
                     <i class="fab fa-apple" style="font-size: 30px; color: #fff;"></i>
                   </div>
@@ -830,10 +832,12 @@
                     <h5 style="margin: 0; color: #fff;" data-translate="appStore">App Store</h5>
                   </div>
                 </a>
+                <span class="pending-badge">Pending Review</span>
               </div>
 
-              <div class="download-btn mr-20 mb-20">
-                <a href="#" class="google-play-btn d-flex align-items-center">
+              <div class="download-btn mr-20 mb-20 position-relative">
+                <a href="#" class="google-play-btn d-flex align-items-center" data-app-status="pending"
+                  data-app-platform="android">
                   <div class="app-btn-icon">
                     <i class="fab fa-google-play" style="font-size: 30px; color: #fff;"></i>
                   </div>
@@ -842,10 +846,12 @@
                     <h5 style="margin: 0; color: #fff;" data-translate="googlePlay">Google Play</h5>
                   </div>
                 </a>
+                <span class="pending-badge">Pending Review</span>
               </div>
 
-              <div class="download-btn mb-20">
-                <a href="#" class="apk-download-btn d-flex align-items-center">
+              <div class="download-btn mb-20 position-relative">
+                <a href="#" class="apk-download-btn d-flex align-items-center" data-app-status="available"
+                  data-app-platform="apk">
                   <div class="app-btn-icon">
                     <i class="fas fa-download" style="font-size: 30px; color: #fff;"></i>
                   </div>
@@ -854,6 +860,7 @@
                     <h5 style="margin: 0; color: #fff;" data-translate="apkFile">APK File</h5>
                   </div>
                 </a>
+                <span class="pending-badge" style="display: none;">Available</span>
               </div>
             </div>
           </div>
@@ -1080,7 +1087,110 @@
         $('.one').show();
       });
     });
+
+    // App Status Modal Functionality
+    $(document).ready(function () {
+      const appStatusInfo = {
+        ios: {
+          title: "iOS App - Pending Review",
+          platform: "Apple App Store",
+          status: "Currently under review by Apple",
+          additionalInfo: "Our iOS app has been submitted to the Apple App Store and is currently undergoing Apple's review process.",
+          icon: "fa-apple",
+          iconColor: "#000"
+        },
+        android: {
+          title: "Android App - Pending Review",
+          platform: "Google Play Store",
+          status: "Currently under review by Google",
+          additionalInfo: "Our Android app has been submitted to the Google Play Store and is awaiting approval.",
+          icon: "fa-google-play",
+          iconColor: "#3bccff"
+        },
+        apk: {
+          title: "Direct APK Download",
+          platform: "Direct Download",
+          status: "Available Now!",
+          additionalInfo: "The APK file is available for direct download. This option allows you to install the app directly on your Android device without going through the Play Store. Make sure to enable 'Install from Unknown Sources' in your device settings.",
+          icon: "fa-download",
+          iconColor: "#37a3fe"
+        }
+      };
+
+      // Handle app button clicks
+      $('.app-store-btn, .google-play-btn').on('click', function (e) {
+        e.preventDefault();
+
+        const platform = $(this).data('app-platform');
+        const status = $(this).data('app-status');
+        const info = appStatusInfo[platform];
+
+        if (info) {
+          // Update modal content
+          $('#modalTitle').text(info.title);
+          $('#platformName').text(info.platform);
+          $('#statusMessage').text(info.status);
+          $('#additionalInfo').text(info.additionalInfo);
+
+          // Update icon
+          $('#statusIcon').removeClass().addClass('fas ' + info.icon);
+          $('#statusIcon').css('color', info.iconColor);
+
+          // Show modal
+          $('#appStatusModal').fadeIn(300);
+        }
+      });
+
+      // Handle APK download button separately
+      $('.apk-download-btn').on('click', function (e) {
+        e.preventDefault();
+
+        // Create a temporary link element to trigger download
+        const link = document.createElement('a');
+        link.href = 'assets/ploutoslabs.apk';
+        link.download = 'ploutoslabs.apk';
+        link.style.display = 'none';
+
+        // Append to body, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+
+      // Close modal functionality
+      $('.modal-close, #appStatusModal').on('click', function (e) {
+        if (e.target === this) {
+          $('#appStatusModal').fadeOut(300);
+        }
+      });
+
+      // Prevent modal content from closing modal
+      $('.modal-content').on('click', function (e) {
+        e.stopPropagation();
+      });
+    });
   </script>
+  <!-- App Status Modal -->
+  <div id="appStatusModal" class="app-status-modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <div class="modal-header">
+        <h3 id="modalTitle">App Status</h3>
+      </div>
+      <div class="modal-body">
+        <div class="status-icon">
+          <i class="fas fa-clock" id="statusIcon"></i>
+        </div>
+        <h4 id="platformName">Platform</h4>
+        <p class="status-message" id="statusMessage">Status message here</p>
+
+        <div class="additional-info" id="additionalInfo">
+          Additional information will appear here.
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Load shared components -->
   <script src="assets/js/components.js"></script>
 

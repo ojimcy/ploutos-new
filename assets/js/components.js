@@ -17,7 +17,6 @@ const headerHTML = `
                         <div class="header-menu">
                             <ul class="nav_scroll">
                                 <li><a href="/#home" data-translate="home">Home</a></li>
-                                <li><a href="/#about" data-translate="about">About</a></li>
                                 <li><a href="/#virtual-cards" data-translate="virtualCards">Virtual Cards</a></li>
                                 <li><a href="/#faq" data-translate="faq">FAQ</a></li>
                                 <li>
@@ -60,7 +59,6 @@ const headerHTML = `
             <nav class="itsoft_menu">
                 <ul class="nav_scroll">
                     <li><a href="/#home" data-translate="home">Home</a></li>
-                    <li><a href="/#about" data-translate="about">About</a></li>
                     <li><a href="/#virtual-cards" data-translate="virtualCards">Virtual Cards</a></li>
                     <li><a href="/#faq" data-translate="faq">FAQ</a></li>
                     <li>

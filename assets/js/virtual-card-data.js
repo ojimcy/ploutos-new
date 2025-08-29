@@ -3,22 +3,55 @@ class VirtualCardTracker {
     constructor() {
         this.isInitialized = false;
         this.animationIntervals = [];
+        this.apiUrl = 'https://mining-api-123lfk.ploutoslabs.io/all-cards/count';
         this.currentStats = {
-            totalCards: 12450
+            totalCards: 0 // fallback value
         };
     }
 
     // Initialize the virtual card tracker
-    init() {
+    async init() {
         if (this.isInitialized) return;
 
         try {
+            // Fetch initial data from API
+            await this.fetchCardCount();
             this.updateStatsDisplay();
             this.startRealTimeUpdates();
             this.isInitialized = true;
             console.log('Virtual Card Tracker initialized successfully');
         } catch (error) {
             console.error('Error initializing Virtual Card Tracker:', error);
+            // Still update display with fallback value
+            this.updateStatsDisplay();
+        }
+    }
+
+    // Fetch card count from API
+    async fetchCardCount() {
+        try {
+            const response = await fetch(this.apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data.count !== undefined) {
+                this.currentStats.totalCards = data.count;
+                console.log('Card count updated from API:', data.count);
+            } else {
+                throw new Error('Invalid response format: missing count field');
+            }
+        } catch (error) {
+            console.error('Error fetching card count from API:', error);
+            // Keep using the current/fallback value
         }
     }
 
@@ -44,20 +77,13 @@ class VirtualCardTracker {
 
     // Start real-time updates
     startRealTimeUpdates() {
-        // Update stats every 30 seconds
-        const updateStatsInterval = setInterval(() => {
-            this.simulateStatUpdates();
+        // Update stats every 30 seconds by fetching from API
+        const updateStatsInterval = setInterval(async () => {
+            await this.fetchCardCount();
             this.updateStatsDisplay();
         }, 30000);
 
         this.animationIntervals.push(updateStatsInterval);
-    }
-
-    // Simulate realistic stat updates
-    simulateStatUpdates() {
-        // Small incremental changes to make it feel real - only update total cards
-        const increment = Math.floor(Math.random() * 3) + 1;
-        this.currentStats.totalCards += increment;
     }
 
     // Stop all intervals (cleanup)
@@ -74,9 +100,9 @@ let virtualCardTracker;
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize with a small delay to ensure all elements are loaded
-    setTimeout(() => {
+    setTimeout(async () => {
         virtualCardTracker = new VirtualCardTracker();
-        virtualCardTracker.init();
+        await virtualCardTracker.init();
     }, 1000);
 });
 
