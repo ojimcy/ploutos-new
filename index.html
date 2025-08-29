@@ -99,7 +99,7 @@
             </p>
             <div class="d-flex align-items-center">
               <div class="slider-button wow fadeInUp" data-wow-delay=".6s">
-                <a href="https://app.ploutoslabs.io" data-translate="buy">Buy $PLTL Now</a>
+                <a href="#" class="smart-app-link" data-translate="buy">Buy $PLTL Now</a>
               </div>
               <div class="slider-btn wow fadeInUp" data-wow-delay=".6s">
                 <a href="https://www.coinscope.co/coin/pltl/audit" data-translate="audit">
@@ -370,7 +370,7 @@
                   <h3 data-translate="buyAndSell">Buy and Sell</h3>
                   <p data-translate="buyAndSellSubTitle">
                     Trade digital assets seamlessly. <br />
-                    <a href="https://app.ploutoslabs.io" data-translate="learnMore">Learn More...</a>
+                    <a href="#" class="smart-app-link" data-translate="learnMore">Learn More...</a>
                   </p>
                 </div>
               </div>
@@ -384,7 +384,7 @@
                   <h3 data-translate="swap">Swap</h3>
                   <p style="padding-right: 20px" data-translate="swapSubTitle">
                     Exchange cryptocurrencies effortlessly. <br />
-                    <a href="https://app.ploutoslabs.io" data-translate="learnMore">Learn More...</a>
+                    <a href="#" class="smart-app-link" data-translate="learnMore">Learn More...</a>
                   </p>
                 </div>
               </div>
@@ -398,7 +398,7 @@
                   <h3 data-translate="wallet">Wallet</h3>
                   <p data-translate="walletSubTitle">
                     Save and store assets securely on the Base Network. <br />
-                    <a href="https://app.ploutoslabs.io" data-translate="learnMore">Learn More...</a>
+                    <a href="#" class="smart-app-link" data-translate="learnMore">Learn More...</a>
                   </p>
                 </div>
               </div>
@@ -595,7 +595,7 @@
               </p>
             </div>
             <div class="virtual-card-btn mt-40">
-              <a href="https://app.ploutoslabs.io" class="dreamit-btn">
+              <a href="#" class="dreamit-btn smart-app-link">
                 <span data-translate="getYourCard">Get Your Virtual Card</span>
                 <i class="fas fa-arrow-right"></i>
               </a>
@@ -1145,6 +1145,55 @@
       $('.apk-download-btn').on('click', function (e) {
         e.preventDefault();
 
+        // Try to open the app if installed, fallback to APK download
+        tryOpenAppOrDownload();
+      });
+
+      // Handle all smart app links
+      $(document).on('click', '.smart-app-link', function (e) {
+        e.preventDefault();
+
+        // Try to open the app if installed, fallback to APK download
+        tryOpenAppOrDownload();
+      });
+
+      // Function to try opening app or download APK
+      function tryOpenAppOrDownload() {
+        // Check if we're on a mobile device
+        if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          // Try to open the app using intent
+          const intentUrl = 'intent://ploutoslabs.com/#Intent;scheme=https;package=com.ploutoslabs.app;end';
+
+          // Create a hidden iframe to test if the app opens
+          const iframe = document.createElement('iframe');
+          iframe.style.display = 'none';
+          iframe.src = intentUrl;
+
+          // Set a timeout to detect if the app didn't open
+          const timeout = setTimeout(function () {
+            // If we reach here, the app probably didn't open, so download APK
+            downloadAPK();
+          }, 2000); // 2 second timeout
+
+          // Listen for visibility change (app switching)
+          document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+              // User switched to another app, clear timeout
+              clearTimeout(timeout);
+            }
+          });
+
+          // Try to open the app
+          window.location.href = intentUrl;
+
+        } else {
+          // On desktop, directly download APK
+          downloadAPK();
+        }
+      }
+
+      // Function to download APK
+      function downloadAPK() {
         // Create a temporary link element to trigger download
         const link = document.createElement('a');
         link.href = 'assets/ploutoslabs.apk';
@@ -1155,7 +1204,47 @@
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      });
+
+        // Show a helpful message
+        showDownloadMessage();
+      }
+
+      // Function to show download message
+      function showDownloadMessage() {
+        // Create a simple notification
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #37a3fe;
+          color: white;
+          padding: 15px 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          z-index: 10000;
+          font-family: Arial, sans-serif;
+          max-width: 300px;
+        `;
+        notification.innerHTML = `
+          <div style="display: flex; align-items: center;">
+            <i class="fas fa-download" style="margin-right: 10px;"></i>
+            <div>
+              <div style="font-weight: bold; margin-bottom: 5px;">APK Download Started</div>
+              <div style="font-size: 12px;">Check your downloads folder</div>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Remove notification after 5 seconds
+        setTimeout(function () {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 5000);
+      }
 
       // Close modal functionality
       $('.modal-close, #appStatusModal').on('click', function (e) {

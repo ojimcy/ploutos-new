@@ -20,7 +20,7 @@ const headerHTML = `
                                 <li><a href="/#virtual-cards" data-translate="virtualCards">Virtual Cards</a></li>
                                 <li><a href="/#faq" data-translate="faq">FAQ</a></li>
                                 <li>
-                                    <a href="https://app.ploutoslabs.io" data-translate="airdrop">Airdrop</a>
+                                    <a href="#" class="smart-app-link" data-translate="airdrop">Airdrop</a>
                                 </li>
                                 <li>
                                     <a href="#" data-translate="trade">Trade <i class="fas fa-angle-down"></i></a>
@@ -62,7 +62,7 @@ const headerHTML = `
                     <li><a href="/#virtual-cards" data-translate="virtualCards">Virtual Cards</a></li>
                     <li><a href="/#faq" data-translate="faq">FAQ</a></li>
                     <li>
-                        <a href="https://app.ploutoslabs.io" data-translate="airdrop">Airdrop</a>
+                        <a href="#" class="smart-app-link" data-translate="airdrop">Airdrop</a>
                     </li>
                     <li>
                         <a href="#" data-translate="trade">Trade <i class="fas fa-angle-down"></i></a>
@@ -142,7 +142,7 @@ const footerHTML = `
                                         <a href="#" onclick="openWhitepaper()" data-translate="whitepaper">Whitepaper</a>
                                     </li>
                                     <li>
-                                        <a href="https://app.ploutoslabs.io" target="_blank" data-translate="airdrop">Airdrop</a>
+                                        <a href="#" class="smart-app-link" data-translate="airdrop">Airdrop</a>
                                     </li>
                                 </ul>
                             </div>
