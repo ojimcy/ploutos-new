@@ -1141,132 +1141,23 @@
         }
       });
 
-      // Handle APK download button separately
+      // Handle APK download button - direct download
       $('.apk-download-btn').on('click', function (e) {
         e.preventDefault();
 
-        // Try to open the app if installed, fallback to APK download
-        tryOpenAppOrDownload();
+        // Direct APK download
+        downloadAPK();
       });
 
-      // Handle all smart app links
+      // Handle all smart app links - scroll to app download section
       $(document).on('click', '.smart-app-link', function (e) {
         e.preventDefault();
 
-        // Try to open the app if installed, fallback to APK download
-        tryOpenAppOrDownload();
+        // Smooth scroll to the app download section
+        $('html, body').animate({
+          scrollTop: $('.app-download-buttons').offset().top - 100
+        }, 800);
       });
-
-      // Function to try opening app or download APK
-      function tryOpenAppOrDownload() {
-        // Check if we're on a mobile device
-        if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          // Try to open the app using intent with correct package name
-          const intentUrl = 'intent://ploutoslabs.com/#Intent;scheme=https;package=com.ploutoslabs;end';
-
-          // Set a timeout to detect if the app didn't open
-          const timeout = setTimeout(function () {
-            // If we reach here, the app probably didn't open, so show confirmation dialog
-            showDownloadConfirmation();
-          }, 2000); // 2 second timeout
-
-          // Listen for visibility change (app switching)
-          document.addEventListener('visibilitychange', function () {
-            if (document.hidden) {
-              // User switched to another app, clear timeout
-              clearTimeout(timeout);
-            }
-          });
-
-          // Try to open the app
-          window.location.href = intentUrl;
-
-        } else {
-          // On desktop, show confirmation dialog first
-          showDownloadConfirmation();
-        }
-      }
-
-      // Function to show download confirmation dialog
-      function showDownloadConfirmation() {
-        // Create confirmation modal
-        const confirmationModal = document.createElement('div');
-        confirmationModal.id = 'downloadConfirmationModal';
-        confirmationModal.style.cssText = `
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.7);
-          z-index: 10001;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: Arial, sans-serif;
-        `;
-
-        confirmationModal.innerHTML = `
-          <div style="
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-          ">
-            <div style="margin-bottom: 20px;">
-              <i class="fas fa-download" style="font-size: 48px; color: #37a3fe;"></i>
-            </div>
-            <h3 style="margin: 0 0 15px 0; color: #333;">Download Ploutos Labs App</h3>
-            <p style="margin: 0 0 25px 0; color: #666; line-height: 1.5;">
-              The Ploutos Labs app doesn't seem to be installed on your device. 
-              Would you like to download the APK file to install it?
-            </p>
-            <div style="display: flex; gap: 15px; justify-content: center;">
-              <button id="confirmDownload" style="
-                background: #37a3fe;
-                color: white;
-                border: none;
-                padding: 12px 24px;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 16px;
-                font-weight: 500;
-              ">Download APK</button>
-              <button id="cancelDownload" style="
-                background: #f1f1f1;
-                color: #666;
-                border: none;
-                padding: 12px 24px;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 16px;
-              ">Cancel</button>
-            </div>
-          </div>
-        `;
-
-        document.body.appendChild(confirmationModal);
-
-        // Add event listeners
-        document.getElementById('confirmDownload').addEventListener('click', function () {
-          document.body.removeChild(confirmationModal);
-          downloadAPK();
-        });
-
-        document.getElementById('cancelDownload').addEventListener('click', function () {
-          document.body.removeChild(confirmationModal);
-        });
-
-        // Close modal when clicking outside
-        confirmationModal.addEventListener('click', function (e) {
-          if (e.target === confirmationModal) {
-            document.body.removeChild(confirmationModal);
-          }
-        });
-      }
 
       // Function to download APK
       function downloadAPK() {
@@ -1281,45 +1172,45 @@
         link.click();
         document.body.removeChild(link);
 
-        // Show a helpful message
-        showDownloadMessage();
+        // Show a simple success message
+        showDownloadSuccess();
       }
 
-      // Function to show download message
-      function showDownloadMessage() {
-        // Create a simple notification
+      // Function to show download success message
+      function showDownloadSuccess() {
+        // Create a simple success notification
         const notification = document.createElement('div');
         notification.style.cssText = `
           position: fixed;
           top: 20px;
           right: 20px;
-          background: #37a3fe;
+          background: #28a745;
           color: white;
           padding: 15px 20px;
           border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           z-index: 10000;
           font-family: Arial, sans-serif;
           max-width: 300px;
         `;
         notification.innerHTML = `
           <div style="display: flex; align-items: center;">
-            <i class="fas fa-download" style="margin-right: 10px;"></i>
-            <div>
-              <div style="font-weight: bold; margin-bottom: 5px;">APK Download Started</div>
-              <div style="font-size: 12px;">Check your downloads folder</div>
-            </div>
+            <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
+          <div>
+            <div style="font-weight: bold; margin-bottom: 5px;">Download Started!</div>
+            <div style="font-size: 12px;">APK file is downloading...</div>
           </div>
+        </div>
         `;
 
         document.body.appendChild(notification);
 
-        // Remove notification after 5 seconds
+        // Remove notification after 4 seconds
         setTimeout(function () {
           if (notification.parentNode) {
             notification.parentNode.removeChild(notification);
           }
-        }, 5000);
+        }, 4000);
       }
 
       // Close modal functionality
