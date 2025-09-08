@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+  <title>Welcome to Ploutos - Download the App</title>
+  <meta name="description" content="Your Ploutos account has been created successfully. Download the mobile app to start your cryptocurrency journey." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="Ploutos, cryptocurrency, download, mobile app, success" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="56x56" href="assets/images/fav-icon/favicon.svg" />
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" media="all" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <!-- Main Style CSS -->
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <!-- Registration specific styles -->
+  <link rel="stylesheet" href="assets/css/registration.css" type="text/css" media="all" />
+</head>
+
+<body class="success-body">
+  <!-- Header will be injected here -->
+  <div id="header-container"></div>
+
+  <!-- Success Section -->
+  <div class="success-section">
+    <div class="container">
+      <div class="row justify-content-center min-vh-100 align-items-center">
+        <div class="col-lg-8 col-md-10">
+          <!-- Success Card -->
+          <div class="success-card text-center">
+            <!-- Success Animation -->
+            <div class="success-animation mb-4">
+              <div class="checkmark-circle">
+                <div class="checkmark">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Header -->
+            <div class="success-header mb-4">
+              <h1 class="success-title">🎉 Welcome to Ploutos!</h1>
+              <p class="success-subtitle">Your account has been created successfully</p>
+              <div class="user-info">
+                <small class="text-muted">Registered: <span id="user-email" class="font-weight-bold"></span></small>
+              </div>
+            </div>
+
+            <!-- Download Options -->
+            <div class="download-section mb-5">
+              <h3 class="download-title mb-4">Download the Ploutos App</h3>
+              <p class="download-description">
+                Choose your preferred platform to download and install the Ploutos mobile app
+              </p>
+
+              <div class="download-grid">
+                <!-- Google Play Store -->
+                <div class="download-card" id="google-play-card">
+                  <div class="download-card-inner">
+                    <div class="download-icon">
+                      <i class="fab fa-google-play"></i>
+                    </div>
+                    <h4>Google Play Store</h4>
+                    <p>Official Android App</p>
+                    <div class="download-features">
+                      <small>
+                        <i class="fas fa-check text-success"></i> Auto-updates<br>
+                        <i class="fas fa-check text-success"></i> Secure installation<br>
+                        <i class="fas fa-check text-success"></i> Easy to install
+                      </small>
+                    </div>
+                    <a href="#" class="btn btn-download btn-google-play" onclick="downloadApp('google-play')">
+                      <i class="fab fa-google-play"></i>
+                      Download for Android
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Apple App Store -->
+                <div class="download-card" id="app-store-card">
+                  <div class="download-card-inner">
+                    <div class="download-icon">
+                      <i class="fab fa-apple"></i>
+                    </div>
+                    <h4>Apple App Store</h4>
+                    <p>Official iOS App</p>
+                    <div class="download-features">
+                      <small>
+                        <i class="fas fa-check text-success"></i> Auto-updates<br>
+                        <i class="fas fa-check text-success"></i> App Store reviewed<br>
+                        <i class="fas fa-check text-success"></i> Secure installation
+                      </small>
+                    </div>
+                    <a href="#" class="btn btn-download btn-app-store" onclick="downloadApp('app-store')">
+                      <i class="fab fa-apple"></i>
+                      Download for iOS
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Direct APK -->
+                <div class="download-card" id="apk-card">
+                  <div class="download-card-inner">
+                    <div class="download-icon">
+                      <i class="fas fa-download"></i>
+                    </div>
+                    <h4>Direct APK</h4>
+                    <p>Alternative Android Download</p>
+                    <div class="download-features">
+                      <small>
+                        <i class="fas fa-info text-info"></i> Manual installation<br>
+                        <i class="fas fa-info text-info"></i> Latest version<br>
+                        <i class="fas fa-info text-info"></i> No store required
+                      </small>
+                    </div>
+                    <a href="#" class="btn btn-download btn-apk" onclick="downloadApp('apk')">
+                      <i class="fas fa-download"></i>
+                      Download APK
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="next-steps-section">
+              <h4 class="next-steps-title">
+                <i class="fas fa-list-ol"></i>
+                What's Next?
+              </h4>
+              <div class="steps-container">
+                <div class="step">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <strong>Download & Install</strong>
+                    <p>Choose one of the download options above and install the Ploutos app on your device</p>
+                  </div>
+                </div>
+                
+                <div class="step">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <strong>Sign In (Don't Register)</strong>
+                    <p>Open the app and tap <strong>"Login"</strong> - use the same email and password you just created</p>
+                  </div>
+                </div>
+                
+                <div class="step">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <strong>Start Exploring</strong>
+                    <p>Create your crypto wallets, explore virtual cards, and start earning rewards!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="additional-info mt-5">
+              <div class="info-cards">
+                <div class="info-card">
+                  <div class="info-icon">
+                    <i class="fas fa-shield-alt text-primary"></i>
+                  </div>
+                  <h6>Secure</h6>
+                  <p>Your account is protected with Firebase authentication and encrypted storage</p>
+                </div>
+                
+                <div class="info-card">
+                  <div class="info-icon">
+                    <i class="fas fa-gift text-success"></i>
+                  </div>
+                  <h6>Rewards</h6>
+                  <p id="referral-reward-info">Start earning rewards immediately with daily check-ins and tasks</p>
+                </div>
+                
+                <div class="info-card">
+                  <div class="info-icon">
+                    <i class="fas fa-headset text-info"></i>
+                  </div>
+                  <h6>Support</h6>
+                  <p>Need help? Our support team is available 24/7 through the mobile app</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="footer-actions mt-5">
+              <div class="action-buttons">
+                <button class="btn btn-outline-primary" onclick="shareWithFriends()">
+                  <i class="fas fa-share-alt"></i>
+                  Share with Friends
+                </button>
+                <a href="/" class="btn btn-outline-secondary">
+                  <i class="fas fa-home"></i>
+                  Back to Homepage
+                </a>
+              </div>
+              
+              <div class="social-links mt-3">
+                <p class="text-muted mb-2">Follow us for updates:</p>
+                <a href="#" class="social-link" onclick="openSocialLink('telegram')">
+                  <i class="fab fa-telegram"></i>
+                </a>
+                <a href="#" class="social-link" onclick="openSocialLink('twitter')">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" onclick="openSocialLink('discord')">
+                  <i class="fab fa-discord"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download Success Modal -->
+  <div class="modal fade" id="downloadSuccessModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <i class="fas fa-download text-success"></i>
+            Download Started
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <p class="mb-3">Your download should start automatically.</p>
+          <div id="download-instructions">
+            <!-- Platform-specific instructions will be inserted here -->
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer will be injected here -->
+  <div id="footer-container"></div>
+
+  <!-- JavaScript Files -->
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  
+  <!-- Components (Header/Footer) -->
+  <script src="assets/js/components.js"></script>
+  
+  <!-- Translations -->
+  <script src="translations/translations.js"></script>
+
+  <!-- Success Page Logic -->
+  <script>
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load header and footer
+      document.getElementById('header-container').innerHTML = headerHTML;
+      document.getElementById('footer-container').innerHTML = footerHTML;
+      
+      // Initialize translations
+      setLanguage('en');
+      
+      // Initialize success page
+      initializeSuccessPage();
+    });
+
+    // Initialize success page
+    function initializeSuccessPage() {
+      // Get user email from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const userEmail = urlParams.get('email');
+      
+      if (userEmail) {
+        document.getElementById('user-email').textContent = userEmail;
+      }
+      
+      // Check for referral completion
+      const referralCode = urlParams.get('ref');
+      if (referralCode) {
+        document.getElementById('referral-reward-info').innerHTML = 
+          'Referral bonus applied! You\'ll receive extra rewards for joining through a friend\'s link.';
+      }
+      
+      // Detect user platform and highlight appropriate download option
+      detectPlatformAndHighlight();
+      
+      // Add success animations
+      setTimeout(() => {
+        document.querySelector('.success-card').classList.add('slide-up');
+      }, 100);
+    }
+
+    // Detect user platform
+    function detectPlatformAndHighlight() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      
+      if (/android/i.test(userAgent)) {
+        // Android device - highlight Google Play
+        document.getElementById('google-play-card').classList.add('recommended');
+        addRecommendedBadge('google-play-card');
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        // iOS device - highlight App Store
+        document.getElementById('app-store-card').classList.add('recommended');
+        addRecommendedBadge('app-store-card');
+      } else {
+        // Desktop or other - highlight APK as alternative
+        document.getElementById('google-play-card').classList.add('recommended');
+        addRecommendedBadge('google-play-card');
+      }
+    }
+
+    // Add recommended badge
+    function addRecommendedBadge(cardId) {
+      const card = document.getElementById(cardId);
+      const badge = document.createElement('div');
+      badge.className = 'recommended-badge';
+      badge.innerHTML = '<i class="fas fa-star"></i> Recommended';
+      card.querySelector('.download-card-inner').appendChild(badge);
+    }
+
+    // Handle app download
+    function downloadApp(platform) {
+      let downloadUrl = '#';
+      let instructions = '';
+      
+      switch (platform) {
+        case 'google-play':
+          downloadUrl = 'https://play.google.com/store/apps/details?id=com.ploutoslabs';
+          instructions = `
+            <div class="platform-instructions">
+              <i class="fab fa-google-play fa-2x text-success mb-3"></i>
+              <p><strong>For Android devices:</strong></p>
+              <ol class="text-left">
+                <li>The Google Play Store should open automatically</li>
+                <li>Tap "Install" to download the app</li>
+                <li>Once installed, open the app and sign in with your credentials</li>
+              </ol>
+              <p class="text-muted mt-3">If the store doesn't open, search for "Ploutos" in Google Play Store</p>
+            </div>
+          `;
+          break;
+          
+        case 'app-store':
+          downloadUrl = 'https://apps.apple.com/app/ploutos/id123456789'; // Replace with actual App Store URL
+          instructions = `
+            <div class="platform-instructions">
+              <i class="fab fa-apple fa-2x text-primary mb-3"></i>
+              <p><strong>For iPhone/iPad:</strong></p>
+              <ol class="text-left">
+                <li>The App Store should open automatically</li>
+                <li>Tap "Get" to download the app</li>
+                <li>You may need to authenticate with Face ID, Touch ID, or your Apple ID password</li>
+                <li>Once installed, open the app and sign in with your credentials</li>
+              </ol>
+              <p class="text-muted mt-3">If the store doesn't open, search for "Ploutos" in the App Store</p>
+            </div>
+          `;
+          break;
+          
+        case 'apk':
+          downloadUrl = 'https://github.com/ploutoslabs/releases/latest/download/ploutos.apk'; // Replace with actual APK URL
+          instructions = `
+            <div class="platform-instructions">
+              <i class="fas fa-download fa-2x text-warning mb-3"></i>
+              <p><strong>For Android devices (APK):</strong></p>
+              <ol class="text-left">
+                <li>The APK file will start downloading</li>
+                <li>Once downloaded, open the file from your notifications or downloads folder</li>
+                <li>You may need to enable "Install from unknown sources" in your device settings</li>
+                <li>Follow the installation prompts</li>
+                <li>Once installed, open the app and sign in with your credentials</li>
+              </ol>
+              <div class="alert alert-warning mt-3">
+                <small><i class="fas fa-exclamation-triangle"></i> Only install APK files from trusted sources</small>
+              </div>
+            </div>
+          `;
+          break;
+      }
+      
+      // Show instructions modal
+      document.getElementById('download-instructions').innerHTML = instructions;
+      $('#downloadSuccessModal').modal('show');
+      
+      // Track download attempt
+      console.log('Download attempted for platform:', platform);
+      
+      // Open download URL
+      if (downloadUrl !== '#') {
+        setTimeout(() => {
+          window.open(downloadUrl, '_blank');
+        }, 500);
+      }
+    }
+
+    // Share with friends
+    function shareWithFriends() {
+      const shareUrl = window.location.origin + '/register?ref=USER_REFERRAL_CODE'; // Replace with actual user referral code
+      const shareText = 'Join me on Ploutos and start earning cryptocurrency rewards! Use my referral link to get bonus rewards.';
+      
+      if (navigator.share) {
+        // Use native sharing if available (mobile devices)
+        navigator.share({
+          title: 'Join Ploutos',
+          text: shareText,
+          url: shareUrl
+        }).catch(console.error);
+      } else {
+        // Fallback: copy to clipboard
+        const textToCopy = shareText + ' ' + shareUrl;
+        
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            alert('Referral link copied to clipboard! Share it with your friends.');
+          }).catch(() => {
+            // Fallback for clipboard API failure
+            showShareFallback(textToCopy);
+          });
+        } else {
+          showShareFallback(textToCopy);
+        }
+      }
+    }
+
+    // Show share fallback
+    function showShareFallback(text) {
+      prompt('Copy this referral message and share with your friends:', text);
+    }
+
+    // Open social links
+    function openSocialLink(platform) {
+      const socialUrls = {
+        telegram: 'https://t.me/ploutoslabs',
+        twitter: 'https://twitter.com/ploutoslabs',
+        discord: 'https://discord.gg/ploutoslabs'
+      };
+      
+      if (socialUrls[platform]) {
+        window.open(socialUrls[platform], '_blank');
+      }
+    }
+  </script>
+
+  <!-- Additional Styles -->
+  <style>
+    .success-body {
+      background: url('assets/images/hero/bg.png') center center no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    .success-body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(-9deg, #032241 0%, #37a3fe 50%, #02383d 100%);
+      opacity: 0.95;
+      z-index: 0;
+    }
+
+    .success-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .success-card {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .success-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #52c234 0%, #42a927 100%);
+    }
+
+    .checkmark-circle {
+      width: 80px;
+      height: 80px;
+      background: #52c234;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      animation: checkmarkPulse 0.6s ease-in-out;
+    }
+
+    .checkmark {
+      color: white;
+      font-size: 2rem;
+      animation: checkmarkScale 0.3s ease-in-out 0.3s both;
+    }
+
+    @keyframes checkmarkPulse {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes checkmarkScale {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    .success-title {
+      color: #2c3e50;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .download-card {
+      border: 2px solid #e9ecef;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-card:hover {
+      border-color: #667eea;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+    }
+
+    .download-card.recommended {
+      border-color: #52c234;
+      background: linear-gradient(135deg, rgba(82, 194, 52, 0.05) 0%, rgba(66, 169, 39, 0.05) 100%);
+    }
+
+    .recommended-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #52c234;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transform: rotate(15deg);
+    }
+
+    .download-icon {
+      font-size: 3rem;
+      color: #667eea;
+      margin-bottom: 1rem;
+    }
+
+    .download-card h4 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .download-features {
+      margin: 1rem 0;
+      text-align: left;
+    }
+
+    .btn-download {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .btn-google-play {
+      background: #34a853;
+      color: white;
+      border: none;
+    }
+
+    .btn-google-play:hover {
+      background: #2d8f47;
+    }
+
+    .btn-app-store {
+      background: #007aff;
+      color: white;
+      border: none;
+    }
+
+    .btn-app-store:hover {
+      background: #0056cc;
+    }
+
+    .btn-apk {
+      background: #ff9500;
+      color: white;
+      border: none;
+    }
+
+    .btn-apk:hover {
+      background: #e6850e;
+    }
+
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: #667eea;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-content strong {
+      color: #2c3e50;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-card {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .info-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #f8f9fa;
+      color: #6c757d;
+      border-radius: 50%;
+      margin: 0 0.25rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      background: #667eea;
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .success-card {
+        padding: 2rem 1rem;
+        margin: 1rem;
+      }
+
+      .download-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .steps-container {
+        gap: 1rem;
+      }
+
+      .step {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+      }
+
+      .info-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</body>
+
+</html>

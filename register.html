@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+  <title>Create Your Ploutos Account</title>
+  <meta name="description"
+    content="Create your Ploutos account and start your cryptocurrency journey. Secure registration with referral rewards." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="Ploutos, cryptocurrency, register, signup, referral, rewards" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="56x56" href="assets/images/fav-icon/favicon.svg" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" media="all" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <!-- Main Style CSS -->
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <!-- Registration specific styles -->
+  <link rel="stylesheet" href="assets/css/registration.css" type="text/css" media="all" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+
+<body class="registration-body">
+
+  <!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <div class="floating-particle"></div>
+    <div class="floating-particle"></div>
+    <div class="floating-particle"></div>
+    <div class="floating-particle"></div>
+  </div>
+
+  <!-- Registration Section -->
+  <div id="register" class="slider-area registration-section d-flex align-items-center">
+    <div class="container">
+      <div class="mobile-header">
+        <div class="language-selector">
+          <select onchange="setLanguage(this.value)">
+            <option value="en">🇬🇧 English</option>
+            <option value="fr">🇫🇷 Français</option>
+          </select>
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <!-- Registration Card -->
+          <div class="registration-card">
+            <!-- Header -->
+            <div class="registration-header text-center mb-4">
+              <div class="logo-container mb-3">
+                <img src="assets/images/logo.png" alt="Ploutos Logo" class="registration-logo" 
+                     loading="eager" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="logo-fallback" style="display: none;">
+                  <div class="logo-text">PLOUTOS</div>
+                </div>
+              </div>
+              <h2>Create Your Account</h2>
+              <p class="text-muted">Join thousands earning crypto rewards</p>
+              <div class="value-proposition">
+                <div class="benefit-item">
+                  <i class="fas fa-gift"></i>
+                  <span>Referral Rewards</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-shield-alt"></i>
+                  <span>Secure Platform</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-rocket"></i>
+                  <span>Fast Setup</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Referral Notice -->
+            <div id="referral-notice" class="referral-notice" style="display: none;">
+              <div class="alert alert-success">
+                <i class="fas fa-gift"></i>
+                <strong>Referral Applied!</strong>
+                <p class="mb-0">You've been referred by a friend. Your referral rewards will be applied automatically.
+                </p>
+                <small class="referral-code-display">Referral Code: <span id="referral-code-value"></span></small>
+              </div>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registration-form" class="registration-form">
+              <!-- Full Name -->
+              <div class="form-group mb-3">
+                <label class="form-label">
+                  <i class="fas fa-user"></i>
+                  Full Name
+                </label>
+                <input type="text" name="name" class="form-control" placeholder="Enter your full name" required
+                  minlength="2" autocomplete="name">
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Email Address -->
+              <div class="form-group mb-3">
+                <label class="form-label">
+                  <i class="fas fa-envelope"></i>
+                  Email Address
+                </label>
+                <input type="email" name="email" class="form-control" placeholder="Enter your email address" required
+                  autocomplete="email">
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Password -->
+              <div class="form-group mb-3">
+                <label class="form-label">
+                  <i class="fas fa-lock"></i>
+                  Password
+                </label>
+                <div class="password-input-container">
+                  <input type="password" name="password" class="form-control" placeholder="Create a secure password"
+                    required minlength="8" autocomplete="new-password">
+                  <button type="button" class="password-toggle" onclick="togglePassword()">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+                <div class="password-requirements">
+                  <small class="text-muted">Password must be at least 8 characters long</small>
+                </div>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Referral Code (Hidden if applied from URL) -->
+              <div class="form-group mb-4" id="referral-input-section">
+                <label class="form-label">
+                  <i class="fas fa-gift"></i>
+                  Referral Code (Optional)
+                </label>
+                <input type="text" name="referralCode" class="form-control"
+                  placeholder="Enter referral code if you have one" autocomplete="off">
+                <small class="text-muted">Have a referral code? Enter it to get bonus rewards!</small>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Terms and Conditions -->
+              <div class="form-group mb-4">
+                <div class="terms-container">
+                  <div class="custom-checkbox">
+                    <input type="checkbox" class="form-check-input" id="terms-checkbox" required>
+                    <div class="checkbox-design">
+                      <i class="fas fa-check check-icon"></i>
+                    </div>
+                  </div>
+                  <div class="terms-text">
+                    <label class="form-check-label" for="terms-checkbox">
+                      I agree to the 
+                      <a href="terms.html" target="_blank" class="terms-link">Terms of Service</a> and 
+                      <a href="privacy.html" target="_blank" class="terms-link">Privacy Policy</a>
+                    </label>
+                  </div>
+                </div>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-register w-100" id="register-btn">
+                <span class="btn-text">
+                  <i class="fas fa-user-plus"></i>
+                  Create Account
+                </span>
+                <span class="btn-loading" style="display: none;">
+                  <i class="fas fa-spinner fa-spin"></i>
+                  Creating Account...
+                </span>
+              </button>
+            </form>
+
+            <!-- Login Link -->
+            <div class="login-link text-center mt-4">
+              <p class="text-muted">
+                Already have an account?
+                <a href="#" onclick="showLoginInfo()">Sign in to the mobile app</a>
+              </p>
+            </div>
+
+            <!-- Error/Success Messages -->
+            <div id="message-container" class="message-container mt-3" style="display: none;">
+              <!-- Messages will be inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shape">
+      <img src="assets/images/hero/shape.png" alt="" />
+    </div>
+  </div>
+
+  <!-- Login Info Modal -->
+  <div class="modal fade" id="loginInfoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Already Have an Account?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+          <h6>Download the Ploutos App</h6>
+          <p class="text-muted mb-4">
+            To sign in to your existing account, download the Ploutos mobile app and use your login credentials.
+          </p>
+          <div class="download-buttons">
+            <a href="#" class="btn btn-outline-primary mb-2 mr-2">
+              <i class="fab fa-google-play"></i>
+              Google Play
+            </a>
+            <a href="#" class="btn btn-outline-primary mb-2">
+              <i class="fab fa-apple"></i>
+              App Store
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+
+  <!-- Firebase Configuration -->
+  <script src="assets/js/firebase-config.js"></script>
+
+  <!-- Registration Logic -->
+  <script src="assets/js/registration.js"></script>
+
+  <!-- Components (Header/Footer) -->
+  <script src="assets/js/components.js"></script>
+
+  <!-- Translations -->
+  <script src="translations/translations.js"></script>
+
+  <!-- Initialize Page -->
+  <script>
+    // Load header and footer
+    document.getElementById('header-container').innerHTML = headerHTML;
+    document.getElementById('footer-container').innerHTML = footerHTML;
+
+    // Initialize translations (default to English)
+    setLanguage('en');
+
+    // Initialize registration page
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeRegistrationPage();
+      initializeEnhancedUI();
+    });
+
+    // Enhanced UI interactions
+    function initializeEnhancedUI() {
+      // Add focus animations to form fields
+      const formControls = document.querySelectorAll('.form-control');
+      formControls.forEach(control => {
+        control.addEventListener('focus', function () {
+          this.parentElement.classList.add('focused');
+        });
+
+        control.addEventListener('blur', function () {
+          this.parentElement.classList.remove('focused');
+        });
+
+        // Add floating label effect
+        control.addEventListener('input', function () {
+          if (this.value) {
+            this.parentElement.classList.add('has-value');
+          } else {
+            this.parentElement.classList.remove('has-value');
+          }
+        });
+      });
+
+      // Add smooth card entrance animation
+      setTimeout(() => {
+        document.querySelector('.registration-card').style.opacity = '0';
+        document.querySelector('.registration-card').style.transform = 'translateY(30px)';
+
+        setTimeout(() => {
+          document.querySelector('.registration-card').style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+          document.querySelector('.registration-card').style.opacity = '1';
+          document.querySelector('.registration-card').style.transform = 'translateY(0)';
+        }, 100);
+      }, 200);
+
+      // Add ripple effect to submit button
+      const submitBtn = document.getElementById('register-btn');
+      submitBtn.addEventListener('click', function (e) {
+        if (!this.disabled) {
+          const ripple = document.createElement('span');
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+
+          ripple.style.width = ripple.style.height = size + 'px';
+          ripple.style.left = x + 'px';
+          ripple.style.top = y + 'px';
+          ripple.classList.add('ripple-effect');
+
+          this.appendChild(ripple);
+
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        }
+      });
+
+      // Enhanced password strength indicator
+      const passwordInput = document.querySelector('input[name="password"]');
+      if (passwordInput) {
+        const strengthIndicator = document.createElement('div');
+        strengthIndicator.className = 'password-strength';
+        strengthIndicator.innerHTML = `
+          <div class="strength-bars">
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+          </div>
+          <div class="strength-text">Password strength</div>
+        `;
+        passwordInput.parentElement.parentElement.appendChild(strengthIndicator);
+
+        passwordInput.addEventListener('input', function () {
+          const password = this.value;
+          const strength = calculatePasswordStrength(password);
+          updatePasswordStrength(strengthIndicator, strength);
+        });
+      }
+    }
+
+    function calculatePasswordStrength(password) {
+      let strength = 0;
+      if (password.length >= 8) strength++;
+      if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+      if (password.match(/\d/)) strength++;
+      if (password.match(/[^a-zA-Z\d]/)) strength++;
+      return strength;
+    }
+
+    function updatePasswordStrength(indicator, strength) {
+      const bars = indicator.querySelectorAll('.strength-bar');
+      const text = indicator.querySelector('.strength-text');
+      const strengthTexts = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+      const strengthColors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#16a34a'];
+
+      bars.forEach((bar, index) => {
+        if (index < strength) {
+          bar.style.backgroundColor = strengthColors[strength - 1];
+          bar.classList.add('active');
+        } else {
+          bar.style.backgroundColor = '#e5e7eb';
+          bar.classList.remove('active');
+        }
+      });
+
+      text.textContent = strength > 0 ? strengthTexts[strength - 1] : 'Password strength';
+      text.style.color = strength > 0 ? strengthColors[strength - 1] : '#6b7280';
+    }
+  </script>
+</body>
+
+</html>
