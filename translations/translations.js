@@ -131,6 +131,7 @@ const translations = {
     copyright: 'Copyright © Ploutoslabs all rights reserved.',
     termsCondition: 'Terms Condition',
     privacyPolicy: 'Privacy Policy',
+    eula: 'EULA',
     tradeTitle: 'Trade on Ploutos',
     // meta tags
     description:
@@ -180,6 +181,54 @@ const translations = {
     joinThousands: 'Join Thousands of Users',
     cardsSoldLabel: 'Cards Sold',
     cardsSoldDescription: 'Thousands of users are already enjoying the freedom of spending crypto with our virtual cards.',
+    
+    // Delete Account Page
+    deleteAccount: 'Delete Account',
+    deleteAccountTitle: 'Delete Account | Ploutos - Account Deletion Guide',
+    deleteAccountDescription: 'Learn how to delete your Ploutos account from both the mobile app and dashboard. Complete step-by-step instructions and account deletion options.',
+    deleteAccountKeywords: 'Ploutos, delete account, account deletion, remove account, close account, data deletion',
+    deleteAccountOgDescription: 'Step-by-step guide to delete your Ploutos account',
+    accountManagement: 'Account Management',
+    deleteYourAccount: 'Delete Your Account',
+    deleteAccountIntro: "We're sorry to see you go. Below you'll find comprehensive instructions on how to delete your Ploutos account from both our mobile app and web dashboard.",
+    importantNotice: 'Important Notice',
+    importantNoticeText: 'Deleting your account is <strong>permanent and irreversible</strong>. Once deleted, you will lose access to:',
+    loseWalletAccess: 'Your cryptocurrency wallets and stored funds',
+    loseTransactionHistory: 'Transaction history and records',
+    loseVirtualCards: 'Virtual cards and payment methods',
+    loseRewardsPoints: 'Earned rewards and loyalty points',
+    loseProfileData: 'All personal data and preferences',
+    deleteFromMobileApp: 'Delete from Mobile App',
+    mobileAppDeletionDesc: 'Follow these steps to delete your account directly from the Ploutos mobile application:',
+    mobileStep1: '<strong>Access Security Settings</strong><br>Open the app → Go to Settings (Profile tab) → Tap "Security" → Scroll down to "Account Management" section',
+    mobileStep2: '<strong>Start Deletion Process</strong><br>Tap "Delete Account" (red button) → Review the consequences (lost wallets, cards, rewards, data)',
+    mobileStep3: '<strong>Acknowledge Consequences</strong><br>Check the acknowledgment box confirming you understand all data will be permanently lost',
+    mobileStep4: '<strong>Verify Your Identity</strong><br>Enter your 6-digit PIN to confirm your identity and authorize the deletion',
+    mobileStep5: '<strong>Type Confirmation Phrase</strong><br>Type "DELETE MY ACCOUNT" exactly as shown to confirm you want to proceed',
+    mobileStep6: '<strong>Final Countdown & Deletion</strong><br>Wait for the 5-second countdown, then tap "Delete My Account Forever" to complete the process',
+    deleteFromDashboard: 'Delete from Web Dashboard',
+    dashboardDeletionDesc: 'You can also delete your account from our web dashboard at dashboard.ploutoslabs.io:',
+    dashboardStep1: '<strong>Navigate to Delete Account Page</strong><br>Log into your account at <a href="https://referral.ploutoslabs.io/settings/delete-account" target="_blank">referral.ploutoslabs.io</a> → Go to Settings → Scroll to "Danger Zone" → Click "Delete Account"',
+    dashboardStep2: '<strong>Review Warnings</strong><br>Read all warnings carefully → Ensure you\'ve withdrawn all funds from your wallet → Click "I understand, continue"',
+    dashboardStep3: '<strong>Final Confirmation</strong><br>Review the final confirmation screen → Type "DELETE" (in capital letters) in the confirmation box',
+    dashboardStep4: '<strong>Complete Deletion</strong><br>Click "Delete My Account" → Your account will be immediately deleted → You\'ll be logged out and redirected to login page',
+    needHelp: 'Need Help with Account Deletion?',
+    contactUsForHelp: "If you're unable to delete your account using the methods above, or if you need assistance, please contact our support team.",
+    emailSupport: 'Email Support',
+    emailSupportDesc: 'Send us an email with your account deletion request. Please include:',
+    emailReq1: 'Your registered email address',
+    emailReq2: 'Reason for account deletion (optional)',
+    emailReq3: 'Confirmation that you understand this action is permanent',
+    sendDeletionRequest: 'Send Deletion Request',
+    dataRetentionPolicy: 'Data Retention Policy',
+    processingTime: 'Processing Time',
+    processingTimeDesc: 'Account deletion requests are typically processed within 7-14 business days.',
+    dataRemoval: 'Data Removal',
+    dataRemovalDesc: 'All personal data will be permanently removed from our systems as per GDPR requirements.',
+    legalRequirements: 'Legal Requirements',
+    legalRequirementsDesc: 'Some data may be retained for legal compliance purposes as required by law.',
+    noRecovery: 'No Recovery',
+    noRecoveryDesc: 'Once deleted, accounts cannot be recovered or restored under any circumstances.',
   },
   fr: {
     siteTitle:
@@ -317,6 +366,7 @@ const translations = {
     copyright: 'Copyright © Ploutoslabs tous droits réservés.',
     termsCondition: "Conditions d'utilisation",
     privacyPolicy: 'Politique de confidentialité',
+    eula: 'CLUF',
     tradeTitle: 'Trade on Ploutos',
     // meta tags
     description:
@@ -368,6 +418,54 @@ const translations = {
     joinThousands: 'Rejoignez des Milliers d\'Utilisateurs',
     cardsSoldLabel: 'Cartes Vendues',
     cardsSoldDescription: 'Des milliers d\'utilisateurs profitent déjà de la liberté de dépenser des cryptos avec nos cartes virtuelles.',
+    
+    // Delete Account Page - French
+    deleteAccount: 'Supprimer le Compte',
+    deleteAccountTitle: 'Supprimer le Compte | Ploutos - Guide de Suppression de Compte',
+    deleteAccountDescription: 'Apprenez à supprimer votre compte Ploutos depuis l\'application mobile et le tableau de bord. Instructions complètes étape par étape et options de suppression de compte.',
+    deleteAccountKeywords: 'Ploutos, supprimer compte, suppression compte, fermer compte, suppression données',
+    deleteAccountOgDescription: 'Guide étape par étape pour supprimer votre compte Ploutos',
+    accountManagement: 'Gestion du Compte',
+    deleteYourAccount: 'Supprimer Votre Compte',
+    deleteAccountIntro: 'Nous sommes désolés de vous voir partir. Ci-dessous, vous trouverez des instructions complètes sur la façon de supprimer votre compte Ploutos depuis notre application mobile et notre tableau de bord web.',
+    importantNotice: 'Avis Important',
+    importantNoticeText: 'La suppression de votre compte est <strong>permanente et irréversible</strong>. Une fois supprimé, vous perdrez l\'accès à :',
+    loseWalletAccess: 'Vos portefeuilles de cryptomonnaie et fonds stockés',
+    loseTransactionHistory: 'Historique des transactions et enregistrements',
+    loseVirtualCards: 'Cartes virtuelles et méthodes de paiement',
+    loseRewardsPoints: 'Points de récompense et de fidélité gagnés',
+    loseProfileData: 'Toutes les données personnelles et préférences',
+    deleteFromMobileApp: 'Supprimer depuis l\'Application Mobile',
+    mobileAppDeletionDesc: 'Suivez ces étapes pour supprimer votre compte directement depuis l\'application mobile Ploutos :',
+    mobileStep1: '<strong>Accéder aux Paramètres de Sécurité</strong><br>Ouvrir l\'app → Aller aux Paramètres (onglet Profil) → Appuyez sur "Sécurité" → Faites défiler jusqu\'à "Gestion du Compte"',
+    mobileStep2: '<strong>Démarrer le Processus de Suppression</strong><br>Appuyez sur "Supprimer le Compte" (bouton rouge) → Examinez les conséquences (portefeuilles, cartes, récompenses, données perdues)',
+    mobileStep3: '<strong>Reconnaître les Conséquences</strong><br>Cochez la case de reconnaissance confirmant que vous comprenez que toutes les données seront définitivement perdues',
+    mobileStep4: '<strong>Vérifier Votre Identité</strong><br>Saisissez votre PIN à 6 chiffres pour confirmer votre identité et autoriser la suppression',
+    mobileStep5: '<strong>Saisir la Phrase de Confirmation</strong><br>Tapez "DELETE MY ACCOUNT" exactement comme indiqué pour confirmer que vous voulez continuer',
+    mobileStep6: '<strong>Compte à Rebours Final & Suppression</strong><br>Attendez le compte à rebours de 5 secondes, puis appuyez sur "Supprimer Mon Compte Pour Toujours" pour terminer',
+    deleteFromDashboard: 'Supprimer depuis le Tableau de Bord Web',
+    dashboardDeletionDesc: 'Vous pouvez également supprimer votre compte depuis notre tableau de bord web sur dashboard.ploutoslabs.io :',
+    dashboardStep1: '<strong>Naviguer vers la Page de Suppression</strong><br>Connectez-vous sur <a href="https://referral.ploutoslabs.io/settings/delete-account" target="_blank">referral.ploutoslabs.io</a> → Allez aux Paramètres → Faites défiler vers "Zone de Danger" → Cliquez "Supprimer le Compte"',
+    dashboardStep2: '<strong>Examiner les Avertissements</strong><br>Lisez tous les avertissements attentivement → Assurez-vous d\'avoir retiré tous les fonds de votre portefeuille → Cliquez "Je comprends, continuer"',
+    dashboardStep3: '<strong>Confirmation Finale</strong><br>Examinez l\'écran de confirmation finale → Tapez "DELETE" (en lettres majuscules) dans la boîte de confirmation',
+    dashboardStep4: '<strong>Compléter la Suppression</strong><br>Cliquez "Supprimer Mon Compte" → Votre compte sera immédiatement supprimé → Vous serez déconnecté et redirigé vers la page de connexion',
+    needHelp: 'Besoin d\'Aide pour la Suppression du Compte ?',
+    contactUsForHelp: 'Si vous ne parvenez pas à supprimer votre compte en utilisant les méthodes ci-dessus, ou si vous avez besoin d\'assistance, veuillez contacter notre équipe de support.',
+    emailSupport: 'Support Email',
+    emailSupportDesc: 'Envoyez-nous un email avec votre demande de suppression de compte. Veuillez inclure :',
+    emailReq1: 'Votre adresse email enregistrée',
+    emailReq2: 'Raison de la suppression du compte (optionnel)',
+    emailReq3: 'Confirmation que vous comprenez que cette action est permanente',
+    sendDeletionRequest: 'Envoyer la Demande de Suppression',
+    dataRetentionPolicy: 'Politique de Rétention des Données',
+    processingTime: 'Temps de Traitement',
+    processingTimeDesc: 'Les demandes de suppression de compte sont généralement traitées dans un délai de 7 à 14 jours ouvrables.',
+    dataRemoval: 'Suppression des Données',
+    dataRemovalDesc: 'Toutes les données personnelles seront définitivement supprimées de nos systèmes conformément aux exigences RGPD.',
+    legalRequirements: 'Exigences Légales',
+    legalRequirementsDesc: 'Certaines données peuvent être conservées à des fins de conformité légale selon les exigences de la loi.',
+    noRecovery: 'Aucune Récupération',
+    noRecoveryDesc: 'Une fois supprimés, les comptes ne peuvent pas être récupérés ou restaurés en aucune circonstance.',
   },
 };
 
@@ -376,7 +474,12 @@ function setLanguage(lang) {
   document.querySelectorAll('[data-translate]').forEach((element) => {
     const key = element.getAttribute('data-translate');
     if (translations[lang][key]) {
-      element.textContent = translations[lang][key];
+      // Check if the translation contains HTML tags
+      if (translations[lang][key].includes('<') || translations[lang][key].includes('&')) {
+        element.innerHTML = translations[lang][key];
+      } else {
+        element.textContent = translations[lang][key];
+      }
     }
   });
 }

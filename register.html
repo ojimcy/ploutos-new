@@ -233,8 +233,8 @@
   </div>
 
   <!-- JavaScript Files -->
-  <script src="assets/js/jquery-3.6.0.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Firebase Configuration -->
   <script src="assets/js/firebase-config.js"></script>
@@ -250,17 +250,162 @@
 
   <!-- Initialize Page -->
   <script>
-    // Load header and footer
-    document.getElementById('header-container').innerHTML = headerHTML;
-    document.getElementById('footer-container').innerHTML = footerHTML;
+    // Referral Code Handling with Debug Logging
+    function extractReferralCode() {
+      console.log('Extracting referral code from URL:', window.location.href);
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const refCode = urlParams.get('ref');
+      
+      console.log('Raw ref parameter:', refCode);
+      
+      if (refCode) {
+        // Remove quotes if present and validate
+        const cleanRefCode = refCode.replace(/['"]/g, '').trim();
+        console.log('Cleaned ref code:', cleanRefCode);
+        
+        // More flexible validation (alphanumeric, 3-15 characters)
+        if (/^[a-zA-Z0-9]{3,15}$/.test(cleanRefCode)) {
+          console.log('✅ Referral code validated successfully:', cleanRefCode);
+          
+          // Store in sessionStorage for persistence
+          sessionStorage.setItem('referralCode', cleanRefCode);
+          
+          // Clean URL by removing the ref parameter
+          try {
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.delete('ref');
+            window.history.replaceState({}, document.title, newUrl.pathname + newUrl.search);
+            console.log('URL cleaned, ref parameter removed');
+          } catch (e) {
+            console.log('Could not clean URL:', e);
+          }
+          
+          return cleanRefCode;
+        } else {
+          console.log('❌ Referral code validation failed for:', cleanRefCode);
+        }
+      } else {
+        console.log('No ref parameter found in URL');
+      }
+      
+      // Check if we have a stored referral code
+      const storedCode = sessionStorage.getItem('referralCode');
+      console.log('Stored referral code:', storedCode);
+      return storedCode;
+    }
+
+    function handleReferralCode(refCode) {
+      console.log('Handling referral code:', refCode);
+      
+      if (refCode) {
+        // Show referral notice
+        console.log('Showing referral notice...');
+        showReferralNotice(refCode);
+        
+        // Pre-fill referral code field
+        const referralInput = document.querySelector('input[name="referralCode"]');
+        console.log('Referral input field:', referralInput);
+        
+        if (referralInput) {
+          referralInput.value = refCode;
+          referralInput.readOnly = true;
+          referralInput.style.backgroundColor = '#f0f9ff';
+          referralInput.style.borderColor = '#0ea5e9';
+          console.log('✅ Referral input pre-filled with:', refCode);
+        } else {
+          console.log('❌ Referral input field not found');
+        }
+        
+        // Hide the referral input section if code is applied
+        const referralSection = document.getElementById('referral-input-section');
+        console.log('Referral section:', referralSection);
+        
+        if (referralSection) {
+          referralSection.style.display = 'none';
+          console.log('✅ Referral section hidden');
+        } else {
+          console.log('❌ Referral section not found');
+        }
+      } else {
+        console.log('No referral code to handle');
+      }
+    }
+
+    function showReferralNotice(refCode) {
+      const referralNotice = document.getElementById('referral-notice');
+      const referralCodeValue = document.getElementById('referral-code-value');
+      
+      if (referralNotice && referralCodeValue) {
+        referralCodeValue.textContent = refCode;
+        referralNotice.style.display = 'block';
+        
+        // Add entrance animation
+        setTimeout(() => {
+          referralNotice.classList.add('fade-in');
+        }, 100);
+      }
+    }
+
+    // Function to get referral code for form submission
+    function getReferralCodeForSubmission() {
+      // First check if there's a referral input field with a value
+      const referralInput = document.querySelector('input[name="referralCode"]');
+      if (referralInput && referralInput.value) {
+        return referralInput.value;
+      }
+      
+      // Fallback to stored referral code
+      return sessionStorage.getItem('referralCode');
+    }
+
+    // Load header and footer (with error checking)
+    const headerContainer = document.getElementById('header-container');
+    const footerContainer = document.getElementById('footer-container');
+    
+    if (headerContainer && typeof headerHTML !== 'undefined') {
+      headerContainer.innerHTML = headerHTML;
+    }
+    
+    if (footerContainer && typeof footerHTML !== 'undefined') {
+      footerContainer.innerHTML = footerHTML;
+    }
 
     // Initialize translations (default to English)
-    setLanguage('en');
+    try {
+      if (typeof setLanguage === 'function') {
+        setLanguage('en');
+      } else {
+        console.log('setLanguage function not available');
+      }
+    } catch (e) {
+      console.log('Error setting language:', e);
+    }
 
     // Initialize registration page
     document.addEventListener('DOMContentLoaded', function () {
-      initializeRegistrationPage();
-      initializeEnhancedUI();
+      console.log('🚀 DOM Content Loaded - Initializing registration page');
+      
+      // Extract and handle referral code first
+      const referralCode = extractReferralCode();
+      handleReferralCode(referralCode);
+      
+      // Initialize other functions with error handling
+      try {
+        if (typeof initializeRegistrationPage === 'function') {
+          initializeRegistrationPage();
+        } else {
+          console.log('initializeRegistrationPage function not available');
+        }
+      } catch (e) {
+        console.log('Error initializing registration page:', e);
+      }
+      
+      try {
+        initializeEnhancedUI();
+      } catch (e) {
+        console.log('Error initializing enhanced UI:', e);
+      }
     });
 
     // Enhanced UI interactions

@@ -208,6 +208,9 @@ const footerHTML = `
                                     <li>
                                         <a href="eula.html" data-translate="eula">EULA</a>
                                     </li>
+                                    <li>
+                                        <a href="delete-account.html" data-translate="deleteAccount">Delete Account</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
