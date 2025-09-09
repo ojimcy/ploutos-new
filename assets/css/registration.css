@@ -1437,6 +1437,21 @@
   min-height: 100vh !important;
   padding: 0.5rem 0 !important;
   overflow: hidden !important;
+  background: url('../images/hero/bg.png') center center no-repeat !important;
+  background-size: cover !important;
+  background-attachment: scroll !important;
+}
+
+.registration-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(-9deg, #032241 0%, #37a3fe 50%, #02383d 100%) !important;
+  opacity: 0.95 !important;
+  z-index: 0 !important;
 }
 
 .registration-section .container {
@@ -1445,6 +1460,8 @@
   align-items: center !important;
   justify-content: center !important;
   padding: 0.5rem !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 /* Override Bootstrap column constraints */
@@ -1487,8 +1504,12 @@
   overflow-y: auto !important;
   padding: 1rem !important;
   margin: 0.5rem auto !important;
-  border-radius: 0.75rem !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 .registration-header {
@@ -1693,13 +1714,27 @@
   border-radius: 0.5rem !important;
 }
 
-/* Hide decorative elements to save space */
-.floating-elements,
-.shape,
-.registration-card::before,
+/* Hide some decorative elements to save space but keep website consistency */
 .registration-card::after,
 .logo-container::before {
   display: none !important;
+}
+
+/* Make floating elements more subtle for compact design */
+.floating-elements {
+  opacity: 0.3 !important;
+}
+
+.floating-particle {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+/* Keep the shape but make it smaller */
+.shape {
+  opacity: 0.4 !important;
+  transform: scale(0.7) !important;
+  bottom: -20% !important;
 }
 
 /* Compact modal */

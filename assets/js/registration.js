@@ -145,12 +145,21 @@ async function handleFormSubmit(event) {
       referral_code: registrationData.referralCode
     });
     
-    // Step 3: Success - redirect to download page
+    // Step 3: Success - redirect to mobile app section
     console.log('Registration successful!');
-    showMessage('success', 'Account created successfully! Redirecting...');
+    showMessage('success', 'Account created successfully! Redirecting to download the app...');
+    
+    // Store registration success data in sessionStorage for the app section
+    sessionStorage.setItem('registrationSuccess', JSON.stringify({
+      email: registrationData.email,
+      name: registrationData.name,
+      referralCode: registrationData.referralCode,
+      timestamp: new Date().toISOString()
+    }));
     
     setTimeout(() => {
-      window.location.href = 'register-success.html?email=' + encodeURIComponent(registrationData.email);
+      // Redirect to index.html mobile-app section
+      window.location.href = '/#mobile-app';
     }, 2000);
     
   } catch (error) {

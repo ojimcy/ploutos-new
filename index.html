@@ -1088,6 +1088,116 @@
       });
     });
 
+    // Check for registration success and show notification
+    $(document).ready(function () {
+      // Check if user just registered
+      const registrationData = sessionStorage.getItem('registrationSuccess');
+      if (registrationData) {
+        const data = JSON.parse(registrationData);
+        sessionStorage.removeItem('registrationSuccess'); // Clear after reading
+        
+        // Show success notification
+        showRegistrationSuccessNotification(data);
+        
+        // Smooth scroll to mobile app section
+        setTimeout(() => {
+          $('html, body').animate({
+            scrollTop: $('#mobile-app').offset().top - 50
+          }, 800);
+        }, 500);
+      }
+      
+      // Also check if URL has #mobile-app hash
+      if (window.location.hash === '#mobile-app') {
+        setTimeout(() => {
+          $('html, body').animate({
+            scrollTop: $('#mobile-app').offset().top - 50
+          }, 800);
+        }, 100);
+      }
+    });
+    
+    // Function to show registration success notification
+    function showRegistrationSuccessNotification(data) {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #52c234 0%, #42a927 100%);
+        color: white;
+        padding: 20px 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(82, 194, 52, 0.3);
+        z-index: 10000;
+        font-family: Arial, sans-serif;
+        max-width: 400px;
+        animation: slideInRight 0.5s ease-out;
+      `;
+      
+      notification.innerHTML = `
+        <div style="display: flex; align-items: flex-start;">
+          <div style="background: white; color: #52c234; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">
+            <i class="fas fa-check" style="font-size: 20px;"></i>
+          </div>
+          <div style="flex: 1;">
+            <div style="font-weight: bold; font-size: 18px; margin-bottom: 8px;">
+              Welcome to Ploutos, ${data.name ? data.name.split(' ')[0] : 'User'}! 🎉
+            </div>
+            <div style="font-size: 14px; opacity: 0.95; margin-bottom: 12px;">
+              Your account has been created successfully.
+            </div>
+            <div style="font-size: 13px; opacity: 0.9;">
+              <i class="fas fa-download" style="margin-right: 5px;"></i>
+              Download the app below to get started
+            </div>
+            ${data.referralCode ? `
+              <div style="font-size: 12px; margin-top: 8px; background: rgba(255,255,255,0.2); padding: 6px 10px; border-radius: 6px;">
+                <i class="fas fa-gift" style="margin-right: 5px;"></i>
+                Referral bonus will be applied!
+              </div>
+            ` : ''}
+          </div>
+          <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer; margin-left: 10px; opacity: 0.8;">
+            &times;
+          </button>
+        </div>
+      `;
+      
+      // Add animation keyframes if not already added
+      if (!document.getElementById('notification-animations')) {
+        const style = document.createElement('style');
+        style.id = 'notification-animations';
+        style.textContent = `
+          @keyframes slideInRight {
+            from {
+              transform: translateX(100%);
+              opacity: 0;
+            }
+            to {
+              transform: translateX(0);
+              opacity: 1;
+            }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      
+      document.body.appendChild(notification);
+      
+      // Auto-remove after 10 seconds
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.style.animation = 'slideInRight 0.5s ease-out reverse';
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+          }, 500);
+        }
+      }, 10000);
+    }
+
     // App Status Modal Functionality
     $(document).ready(function () {
       const appStatusInfo = {
