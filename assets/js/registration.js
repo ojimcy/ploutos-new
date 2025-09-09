@@ -147,30 +147,62 @@ function setupRegistrationEventListeners() {
 }
 
 
-// Create Firebase account
-async function createFirebaseAccount(email, password) {
+// Register with email and password on mining API (Firebase)
+async function registerWithEmailAndPassword(email, password) {
   try {
     const auth = window.FirebaseConfig.getAuth();
     const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
     
-    // Update user profile with display name
-    if (userCredential.user) {
-      await userCredential.user.updateProfile({
-        displayName: document.querySelector('input[name="name"]').value.trim()
-      });
-    }
-    
-    return userCredential;
+    return userCredential.user;
   } catch (error) {
     console.error('Firebase account creation error:', error);
     throw error;
   }
 }
 
-// Register with referral system
-async function registerWithReferralSystem(userData) {
+// Authenticate with mining app using Firebase ID token
+async function authenticateWithMiningApp() {
   try {
-    const response = await fetch(`${REFERRAL_API_BASE}/auth/register`, {
+    // Get the current user's ID token
+    const user = firebase.auth().currentUser;
+    if (!user) {
+      throw new Error('No authenticated user found');
+    }
+    
+    const idToken = await user.getIdToken();
+    
+    const response = await fetch(`${MINING_API_BASE}/auth/firebase`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${idToken}`
+      }
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `HTTP ${response.status}: Mining app authentication failed`);
+    }
+    
+    const result = await response.json();
+    console.log('Mining app authentication successful:', result);
+    
+    // Store the mining JWT token for future requests (in sessionStorage for web)
+    if (result.token) {
+      sessionStorage.setItem('mining_jwt_token', result.token);
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('Mining app authentication error:', error);
+    throw error;
+  }
+}
+
+// Register user on referral dashboard
+async function registerUserOnReferralDashboard(userData) {
+  try {
+    const response = await fetch(`${REFERRAL_API_BASE}/v1/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -184,10 +216,10 @@ async function registerWithReferralSystem(userData) {
     }
     
     const result = await response.json();
-    console.log('Referral system registration successful:', result);
+    console.log('Referral dashboard registration successful:', result);
     return result;
   } catch (error) {
-    console.error('Referral system registration error:', error);
+    console.error('Referral dashboard registration error:', error);
     throw error;
   }
 }
@@ -646,18 +678,32 @@ async function handleRegistrationSubmit(event) {
     setSubmittingState(true);
     showMessage('info', 'Creating your account...');
     
-    // Step 1: Create Firebase account
+    // Step 1: Create user with email and password on Firebase
     console.log('Creating Firebase account...');
-    const userCredential = await createFirebaseAccount(registrationData.email, registrationData.password);
+    const userCredential = await registerWithEmailAndPassword(registrationData.email, registrationData.password);
     
-    // Step 2: Register with referral system
-    console.log('Registering with referral system...');
-    await registerWithReferralSystem({
-      email: registrationData.email,
-      display_name: registrationData.name,
-      firebase_uid: userCredential.user.uid,
-      referral_code: registrationData.referralCode
-    });
+    // Step 2: Update profile with name
+    console.log('Updating user profile...');
+    if (userCredential) {
+      await userCredential.updateProfile({
+        displayName: registrationData.name
+      });
+      
+      // Step 3: Register user in mining database
+      console.log('Registering user in mining database...');
+      await authenticateWithMiningApp();
+      
+      // Step 4: Register user on referral dashboard if referral code is provided
+      if (registrationData.referralCode) {
+        console.log('Registering with referral system...');
+        await registerUserOnReferralDashboard({
+          email: registrationData.email,
+          display_name: registrationData.name,
+          firebase_uid: userCredential.uid,
+          referral_code: registrationData.referralCode
+        });
+      }
+    }
     
     // Success! Store success data and redirect
     sessionStorage.setItem('registrationSuccess', JSON.stringify({
@@ -785,8 +831,13 @@ function handleRegistrationError(error) {
 
 // Toggle password visibility
 function togglePassword() {
-  const passwordInput = document.querySelector('input[name="password"]');
-  const toggleBtn = document.querySelector('.password-toggle i');
+  const passwordInput = document.querySelector('#registration-card input[name="password"]');
+  const toggleBtn = document.querySelector('#registration-card .password-toggle i');
+  
+  if (!passwordInput || !toggleBtn) {
+    console.warn('Password input or toggle button not found');
+    return;
+  }
   
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
