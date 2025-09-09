@@ -705,9 +705,33 @@ function setSubmittingState(isSubmitting) {
   }
 }
 
-// Show message to user
+// Show message to user (automatically detects which container to use)
 function showMessage(type, message) {
-  const container = document.getElementById('message-container');
+  // Determine which message container to use based on current step
+  let container;
+  
+  switch(currentStep) {
+    case 1:
+      container = document.getElementById('email-message-container');
+      break;
+    case 2:
+      container = document.getElementById('verification-message-container');
+      break;
+    case 3:
+      container = document.getElementById('registration-message-container');
+      break;
+    default:
+      // Fallback to any available container
+      container = document.getElementById('registration-message-container') || 
+                 document.getElementById('verification-message-container') || 
+                 document.getElementById('email-message-container');
+  }
+  
+  if (!container) {
+    console.error('No message container found for step', currentStep);
+    return;
+  }
+  
   const alertClass = type === 'error' ? 'alert-danger' : 
                     type === 'success' ? 'alert-success' : 'alert-info';
   
