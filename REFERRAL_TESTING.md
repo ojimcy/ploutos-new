@@ -59,7 +59,7 @@ This document outlines the testing procedure for the website-first referral regi
 - **Auth Domain**: ploutoslabs-91b95.firebaseapp.com
 
 ### Test Referral API
-- **Endpoint**: https://ref-api.ploutoslabs.io/api/v1/auth/register
+- **Endpoint**: https://ref-api.ploutoslabs.io/api/auth/register
 - **Method**: POST
 - **Payload**:
   ```json

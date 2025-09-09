@@ -13,6 +13,7 @@ let currentStep = 1; // Track current step (1: email, 2: verification, 3: regist
 
 // API Configuration
 const REFERRAL_API_BASE = 'https://ref-api.ploutoslabs.io/api';
+const MINING_API_BASE = 'https://mining-api-123lfk.ploutoslabs.io';
 
 // Initialize registration page
 function initializeRegistrationPage() {
@@ -832,7 +833,7 @@ function setupVerificationEventListeners() {
 // Send email verification
 async function sendEmailVerification(email) {
   try {
-    const response = await fetch(`${REFERRAL_API_BASE}/auth/send-email-verification`, {
+    const response = await fetch(`${MINING_API_BASE}/auth/send-email-verification`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -857,7 +858,7 @@ async function sendEmailVerification(email) {
 // Verify email with code
 async function verifyEmailCode(email, code) {
   try {
-    const response = await fetch(`${REFERRAL_API_BASE}/auth/verify-email`, {
+    const response = await fetch(`${MINING_API_BASE}/auth/verify-email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
