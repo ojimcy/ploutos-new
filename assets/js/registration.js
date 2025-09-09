@@ -12,7 +12,7 @@ let verifiedEmail = null; // Store verified email for registration step
 let currentStep = 1; // Track current step (1: email, 2: verification, 3: registration)
 
 // API Configuration
-const REFERRAL_API_BASE = 'https://ref-api.ploutoslabs.io/api/v1';
+const REFERRAL_API_BASE = 'https://ref-api.ploutoslabs.io/api';
 
 // Initialize registration page
 function initializeRegistrationPage() {
