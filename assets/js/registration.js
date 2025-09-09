@@ -1049,6 +1049,10 @@ async function resendVerificationCode() {
   }
 }
 
+// Go back to email step (called from Change Email button)
+function goBackToEmail() {
+  showEmailStep();
+}
 
 // Set verifying state
 function setVerifyingState(isVerifyingNow) {
