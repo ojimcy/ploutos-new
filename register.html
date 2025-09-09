@@ -51,8 +51,9 @@
       </div>
       <div class="row align-items-center justify-content-center">
         <div class="col-md-6 col-md-8 col-sm-10">
-          <!-- Registration Card -->
-          <div class="registration-card">
+          
+          <!-- STEP 1: Email Input Card -->
+          <div class="registration-card" id="email-card">
             <!-- Header -->
             <div class="registration-header text-center mb-4">
               <div class="logo-container mb-3">
@@ -63,8 +64,8 @@
                   <div class="logo-text">PLOUTOS</div>
                 </div>
               </div>
-              <h2>Create Your Account</h2>
-              <p class="text-muted">Join thousands earning crypto rewards</p>
+              <h2>Get Started with Ploutos</h2>
+              <p class="text-muted">Enter your email address to begin registration</p>
               <div class="value-proposition">
                 <div class="benefit-item">
                   <i class="fas fa-gift"></i>
@@ -86,25 +87,13 @@
               <div class="alert alert-success">
                 <i class="fas fa-gift"></i>
                 <strong>Referral Applied!</strong>
-                <p class="mb-0">You've been referred by a friend. Your referral rewards will be applied automatically.
-                </p>
+                <p class="mb-0">You've been referred by a friend. Your referral rewards will be applied automatically.</p>
                 <small class="referral-code-display">Referral Code: <span id="referral-code-value"></span></small>
               </div>
             </div>
 
-            <!-- Registration Form -->
-            <form id="registration-form" class="registration-form">
-              <!-- Full Name -->
-              <div class="form-group mb-3">
-                <label class="form-label">
-                  <i class="fas fa-user"></i>
-                  Full Name
-                </label>
-                <input type="text" name="name" class="form-control" placeholder="Enter your full name" required
-                  minlength="2" autocomplete="name">
-                <div class="invalid-feedback"></div>
-              </div>
-
+            <!-- Email Form -->
+            <form id="email-form" class="email-form">
               <!-- Email Address -->
               <div class="form-group mb-3">
                 <label class="form-label">
@@ -113,6 +102,151 @@
                 </label>
                 <input type="email" name="email" class="form-control" placeholder="Enter your email address" required
                   autocomplete="email">
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-get-code w-100" id="get-code-btn">
+                <span class="btn-text">
+                  <i class="fas fa-paper-plane"></i>
+                  Get Verification Code
+                </span>
+                <span class="btn-loading" style="display: none;">
+                  <i class="fas fa-spinner fa-spin"></i>
+                  Sending Code...
+                </span>
+              </button>
+            </form>
+
+            <!-- Login Link -->
+            <div class="login-link text-center mt-4">
+              <p class="text-muted">
+                Already have an account?
+                <a href="#" onclick="showLoginInfo()">Sign in to the mobile app</a>
+              </p>
+            </div>
+
+            <!-- Error/Success Messages -->
+            <div id="email-message-container" class="message-container mt-3" style="display: none;">
+              <!-- Messages will be inserted here -->
+            </div>
+          </div>
+
+          <!-- STEP 2: Email Verification Card -->
+          <div class="registration-card" id="verification-card" style="display: none;">
+            <!-- Header -->
+            <div class="verification-header text-center mb-4">
+              <div class="logo-container mb-3">
+                <img src="assets/images/logo.png" alt="Ploutos Logo" class="registration-logo" 
+                     loading="eager" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="logo-fallback" style="display: none;">
+                  <div class="logo-text">PLOUTOS</div>
+                </div>
+              </div>
+              <h2>Verify Your Email</h2>
+              <p class="text-muted">We've sent a 6-digit code to <strong id="verification-email"></strong></p>
+              <p class="verification-subtitle">Enter the code to continue with registration</p>
+            </div>
+
+            <!-- Verification Form -->
+            <form id="verification-form" class="verification-form">
+              <!-- Verification Code Input -->
+              <div class="form-group mb-3">
+                <label class="form-label">
+                  <i class="fas fa-key"></i>
+                  Verification Code
+                </label>
+                <div class="verification-code-container">
+                  <input type="text" name="verificationCode" class="form-control verification-code-input" 
+                         placeholder="Enter 6-digit code" required maxlength="6" pattern="[0-9]{6}"
+                         autocomplete="one-time-code" inputmode="numeric">
+                  <div class="code-timer">
+                    <span id="timer-text">Code expires in: <span id="countdown">15:00</span></span>
+                  </div>
+                </div>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-verify w-100" id="verify-btn">
+                <span class="btn-text">
+                  <i class="fas fa-check-circle"></i>
+                  Verify Code
+                </span>
+                <span class="btn-loading" style="display: none;">
+                  <i class="fas fa-spinner fa-spin"></i>
+                  Verifying...
+                </span>
+              </button>
+            </form>
+
+            <!-- Resend Options -->
+            <div class="resend-section text-center mt-4">
+              <p class="text-muted">Didn't receive the code?</p>
+              <div class="resend-actions">
+                <button type="button" class="btn btn-outline-primary btn-sm" id="resend-btn" onclick="resendVerificationCode()">
+                  <i class="fas fa-redo"></i>
+                  Resend Code
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm ml-2" onclick="goBackToEmail()">
+                  <i class="fas fa-arrow-left"></i>
+                  Change Email
+                </button>
+              </div>
+              <div class="resend-info mt-2">
+                <small class="text-muted">
+                  <i class="fas fa-info-circle"></i>
+                  You can request up to 3 codes per hour
+                </small>
+              </div>
+            </div>
+
+            <!-- Verification Messages -->
+            <div id="verification-message-container" class="message-container mt-3" style="display: none;">
+              <!-- Verification messages will be inserted here -->
+            </div>
+          </div>
+
+          <!-- STEP 3: Full Registration Card -->
+          <div class="registration-card" id="registration-card" style="display: none;">
+            <!-- Header -->
+            <div class="registration-header text-center mb-4">
+              <div class="logo-container mb-3">
+                <img src="assets/images/logo.png" alt="Ploutos Logo" class="registration-logo" 
+                     loading="eager" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="logo-fallback" style="display: none;">
+                  <div class="logo-text">PLOUTOS</div>
+                </div>
+              </div>
+              <h2>Create Your Account</h2>
+              <p class="text-muted">Complete your registration to join Ploutos</p>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registration-form" class="registration-form">
+              <!-- Verified Email (Read-only) -->
+              <div class="form-group mb-3">
+                <label class="form-label">
+                  <i class="fas fa-check-circle text-success"></i>
+                  Email Address (Verified)
+                </label>
+                <input type="email" name="email" class="form-control verified-email" readonly>
+                <small class="text-success">
+                  <i class="fas fa-check"></i>
+                  Email verified successfully
+                </small>
+              </div>
+
+              <!-- Full Name -->
+              <div class="form-group mb-3">
+                <label class="form-label">
+                  <i class="fas fa-user"></i>
+                  Full Name
+                </label>
+                <input type="text" name="name" class="form-control" placeholder="Enter your full name" required
+                  minlength="2" autocomplete="name">
                 <div class="invalid-feedback"></div>
               </div>
 
@@ -180,19 +314,12 @@
               </button>
             </form>
 
-            <!-- Login Link -->
-            <div class="login-link text-center mt-4">
-              <p class="text-muted">
-                Already have an account?
-                <a href="#" onclick="showLoginInfo()">Sign in to the mobile app</a>
-              </p>
-            </div>
-
-            <!-- Error/Success Messages -->
-            <div id="message-container" class="message-container mt-3" style="display: none;">
+            <!-- Registration Messages -->
+            <div id="registration-message-container" class="message-container mt-3" style="display: none;">
               <!-- Messages will be inserted here -->
             </div>
           </div>
+
         </div>
       </div>
     </div>
