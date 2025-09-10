@@ -831,8 +831,8 @@ function handleRegistrationError(error) {
 
 // Toggle password visibility
 function togglePassword() {
-  const passwordInput = document.querySelector('#registration-card input[name="password"]');
-  const toggleBtn = document.querySelector('#registration-card .password-toggle i');
+  const passwordInput = document.querySelector('input[name="password"]');
+  const toggleBtn = document.querySelector('.password-show-toggle');
   
   if (!passwordInput || !toggleBtn) {
     console.warn('Password input or toggle button not found');
@@ -841,12 +841,10 @@ function togglePassword() {
   
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
-    toggleBtn.classList.remove('fa-eye');
-    toggleBtn.classList.add('fa-eye-slash');
+    toggleBtn.textContent = 'Hide';
   } else {
     passwordInput.type = 'password';
-    toggleBtn.classList.remove('fa-eye-slash');
-    toggleBtn.classList.add('fa-eye');
+    toggleBtn.textContent = 'Show';
   }
 }
 

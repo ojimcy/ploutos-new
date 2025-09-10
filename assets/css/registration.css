@@ -583,36 +583,37 @@
 }
 
 .password-input-container .form-control {
-  padding-right: 3.5rem;
+  padding-right: 4rem;
 }
 
-.password-toggle {
+.password-show-toggle {
   position: absolute;
   right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #6c757d;
+  color: #37a3fe;
   cursor: pointer;
-  padding: 0.5rem;
-  font-size: 1rem;
-  min-width: 44px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
   transition: color 0.3s ease;
   touch-action: manipulation;
+  z-index: 10;
+  pointer-events: auto;
 }
 
-.password-toggle:hover {
-  color: #37a3fe;
+.password-show-toggle:hover {
+  color: #0056b3;
+  text-decoration: underline;
 }
 
-.password-toggle:focus {
+.password-show-toggle:focus {
   outline: none;
-  color: #37a3fe;
+  color: #0056b3;
+  text-decoration: underline;
 }
 
 /* Password Requirements */
