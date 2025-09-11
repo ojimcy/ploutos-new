@@ -147,82 +147,8 @@ function setupRegistrationEventListeners() {
 }
 
 
-// Register with email and password on mining API (Firebase)
-async function registerWithEmailAndPassword(email, password) {
-  try {
-    const auth = window.FirebaseConfig.getAuth();
-    const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-    
-    return userCredential.user;
-  } catch (error) {
-    console.error('Firebase account creation error:', error);
-    throw error;
-  }
-}
-
-// Authenticate with mining app using Firebase ID token
-async function authenticateWithMiningApp() {
-  try {
-    // Get the current user's ID token
-    const user = firebase.auth().currentUser;
-    if (!user) {
-      throw new Error('No authenticated user found');
-    }
-    
-    const idToken = await user.getIdToken();
-    
-    const response = await fetch(`${MINING_API_BASE}/auth/firebase`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${idToken}`
-      }
-    });
-    
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || `HTTP ${response.status}: Mining app authentication failed`);
-    }
-    
-    const result = await response.json();
-    console.log('Mining app authentication successful:', result);
-    
-    // Store the mining JWT token for future requests (in sessionStorage for web)
-    if (result.token) {
-      sessionStorage.setItem('mining_jwt_token', result.token);
-    }
-    
-    return result;
-  } catch (error) {
-    console.error('Mining app authentication error:', error);
-    throw error;
-  }
-}
-
-// Register user on referral dashboard
-async function registerUserOnReferralDashboard(userData) {
-  try {
-    const response = await fetch(`${REFERRAL_API_BASE}/v1/auth/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData)
-    });
-    
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || `HTTP ${response.status}: Registration failed`);
-    }
-    
-    const result = await response.json();
-    console.log('Referral dashboard registration successful:', result);
-    return result;
-  } catch (error) {
-    console.error('Referral dashboard registration error:', error);
-    throw error;
-  }
-}
+// Note: Firebase registration, mining app authentication, and referral dashboard registration
+// are now handled by the consolidated backend API endpoint at /auth/register
 
 // Validate entire form
 function validateForm(form) {
@@ -640,7 +566,7 @@ function setSendingCodeState(isSending) {
   }
 }
 
-// STEP 3: Handle registration submission  
+// STEP 3: Handle registration submission using consolidated API
 async function handleRegistrationSubmit(event) {
   event.preventDefault();
   
@@ -671,39 +597,30 @@ async function handleRegistrationSubmit(event) {
     name: formData.get('name').trim(),
     email: verifiedEmail, // Use the verified email
     password: formData.get('password'),
-    referralCode: formData.get('referralCode') || referralCode || undefined
+    referralCode: formData.get('referralCode') || referralCode || null
   };
   
   try {
     setSubmittingState(true);
     showMessage('info', 'Creating your account...');
     
-    // Step 1: Create user with email and password on Firebase
-    console.log('Creating Firebase account...');
-    const userCredential = await registerWithEmailAndPassword(registrationData.email, registrationData.password);
-    
-    // Step 2: Update profile with name
-    console.log('Updating user profile...');
-    if (userCredential) {
-      await userCredential.updateProfile({
-        displayName: registrationData.name
-      });
-      
-      // Step 3: Register user in mining database
-      console.log('Registering user in mining database...');
-      await authenticateWithMiningApp();
-      
-      // Step 4: Register user on referral dashboard if referral code is provided
-      if (registrationData.referralCode) {
-        console.log('Registering with referral system...');
-        await registerUserOnReferralDashboard({
-          email: registrationData.email,
-          display_name: registrationData.name,
-          firebase_uid: userCredential.uid,
-          referral_code: registrationData.referralCode
-        });
-      }
+    // Use consolidated registration endpoint
+    console.log('Creating account with consolidated API...');
+    const response = await fetch(`${MINING_API_BASE}/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(registrationData)
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `HTTP ${response.status}: Registration failed`);
     }
+
+    const result = await response.json();
+    console.log('Registration successful!', result);
     
     // Success! Store success data and redirect
     sessionStorage.setItem('registrationSuccess', JSON.stringify({
@@ -711,7 +628,9 @@ async function handleRegistrationSubmit(event) {
       name: registrationData.name,
       referralCode: registrationData.referralCode,
       timestamp: new Date().toISOString(),
-      verified: true
+      verified: true,
+      firebaseUID: result.firebase_uid,
+      token: result.token
     }));
     
     showMessage('success', 'Account created successfully! Redirecting to download the app...');
@@ -805,25 +724,19 @@ function handleRegistrationError(error) {
   
   let message = 'Registration failed. Please try again.';
   
-  if (error.code) {
-    switch (error.code) {
-      case 'auth/email-already-in-use':
-        message = 'An account with this email already exists. <a href="#" onclick="showLoginInfo()">Try signing in instead</a>.';
-        break;
-      case 'auth/weak-password':
-        message = 'Password is too weak. Please choose a stronger password.';
-        break;
-      case 'auth/invalid-email':
-        message = 'Invalid email address. Please check and try again.';
-        break;
-      case 'auth/network-request-failed':
-        message = 'Network error. Please check your connection and try again.';
-        break;
-      default:
-        message = error.message || 'An unexpected error occurred. Please try again.';
+  if (error.message) {
+    // Handle specific error messages from our consolidated API
+    if (error.message.includes('email already exists')) {
+      message = 'An account with this email already exists. <a href="#" onclick="showLoginInfo()">Try signing in instead</a>.';
+    } else if (error.message.includes('password') && error.message.includes('weak')) {
+      message = 'Password is too weak. Please choose a stronger password (at least 8 characters).';
+    } else if (error.message.includes('email') && error.message.includes('format')) {
+      message = 'Invalid email address. Please check and try again.';
+    } else if (error.message.includes('name') && error.message.includes('characters')) {
+      message = 'Name must be at least 2 characters long.';
+    } else {
+      message = error.message;
     }
-  } else if (error.message) {
-    message = error.message;
   }
   
   showMessage('error', message);
