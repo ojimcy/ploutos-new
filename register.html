@@ -20,8 +20,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
   <!-- Main Style CSS -->
   <link rel="stylesheet" href="style.css" type="text/css" media="all" />
-  <!-- Registration specific styles -->
-  <link rel="stylesheet" href="assets/css/registration.css" type="text/css" media="all" />
+  <!-- Registration specific styles - Design System Compliant -->
+  <link rel="stylesheet" href="assets/css/registration-redesign.css" type="text/css" media="all" />
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -51,18 +51,13 @@
       </div>
       <div class="row align-items-center justify-content-center">
         <div class="col-md-6 col-md-8 col-sm-10">
-          
+
           <!-- STEP 1: Email Input Card -->
           <div class="registration-card" id="email-card">
             <!-- Header -->
             <div class="registration-header text-center mb-4">
               <div class="logo-container mb-3">
-                <img src="assets/images/logo.png" alt="Ploutos Logo" class="registration-logo" 
-                     loading="eager" 
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="logo-fallback" style="display: none;">
-                  <div class="logo-text">PLOUTOS</div>
-                </div>
+                <img src="assets/images/about.png" alt="Ploutos Coin" class="registration-logo" loading="eager">
               </div>
               <h2>Get Started with Ploutos</h2>
               <p class="text-muted">Enter your email address to begin registration</p>
@@ -87,7 +82,8 @@
               <div class="alert alert-success">
                 <i class="fas fa-gift"></i>
                 <strong>Referral Applied!</strong>
-                <p class="mb-0">You've been referred by a friend. Your referral rewards will be applied automatically.</p>
+                <p class="mb-0">You've been referred by a friend. Your referral rewards will be applied automatically.
+                </p>
                 <small class="referral-code-display">Referral Code: <span id="referral-code-value"></span></small>
               </div>
             </div>
@@ -137,12 +133,7 @@
             <!-- Header -->
             <div class="verification-header text-center mb-4">
               <div class="logo-container mb-3">
-                <img src="assets/images/logo.png" alt="Ploutos Logo" class="registration-logo" 
-                     loading="eager" 
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="logo-fallback" style="display: none;">
-                  <div class="logo-text">PLOUTOS</div>
-                </div>
+                <img src="assets/images/about.png" alt="Ploutos Coin" class="registration-logo" loading="eager">
               </div>
               <h2>Verify Your Email</h2>
               <p class="text-muted">We've sent a 6-digit code to <strong id="verification-email"></strong></p>
@@ -158,9 +149,9 @@
                   Verification Code
                 </label>
                 <div class="verification-code-container">
-                  <input type="text" name="verificationCode" class="form-control verification-code-input" 
-                         placeholder="Enter 6-digit code" required maxlength="6" pattern="[0-9]{6}"
-                         autocomplete="one-time-code" inputmode="numeric">
+                  <input type="text" name="verificationCode" class="form-control verification-code-input"
+                    placeholder="Enter 6-digit code" required maxlength="6" pattern="[0-9]{6}"
+                    autocomplete="one-time-code" inputmode="numeric">
                   <div class="code-timer">
                     <span id="timer-text">Code expires in: <span id="countdown">15:00</span></span>
                   </div>
@@ -185,7 +176,8 @@
             <div class="resend-section text-center mt-4">
               <p class="text-muted">Didn't receive the code?</p>
               <div class="resend-actions">
-                <button type="button" class="btn btn-outline-primary btn-sm" id="resend-btn" onclick="resendVerificationCode()">
+                <button type="button" class="btn btn-outline-primary btn-sm" id="resend-btn"
+                  onclick="resendVerificationCode()">
                   <i class="fas fa-redo"></i>
                   Resend Code
                 </button>
@@ -213,12 +205,7 @@
             <!-- Header -->
             <div class="registration-header text-center mb-4">
               <div class="logo-container mb-3">
-                <img src="assets/images/logo.png" alt="Ploutos Logo" class="registration-logo" 
-                     loading="eager" 
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="logo-fallback" style="display: none;">
-                  <div class="logo-text">PLOUTOS</div>
-                </div>
+                <img src="assets/images/about.png" alt="Ploutos Coin" class="registration-logo" loading="eager">
               </div>
               <h2>Create Your Account</h2>
               <p class="text-muted">Complete your registration to join Ploutos</p>
@@ -290,8 +277,8 @@
                   </div>
                   <div class="terms-text">
                     <label class="form-check-label" for="terms-checkbox">
-                      I agree to the 
-                      <a href="terms.html" target="_blank" class="terms-link">Terms of Service</a> and 
+                      I agree to the
+                      <a href="terms.html" target="_blank" class="terms-link">Terms of Service</a> and
                       <a href="privacy.html" target="_blank" class="terms-link">Privacy Policy</a>
                     </label>
                   </div>
@@ -358,8 +345,12 @@
   </div>
 
   <!-- JavaScript Files -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"
+    integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Firebase Configuration -->
   <script src="assets/js/firebase-config.js"></script>
@@ -378,24 +369,24 @@
     // Referral Code Handling with Debug Logging
     function extractReferralCode() {
       console.log('Extracting referral code from URL:', window.location.href);
-      
+
       const urlParams = new URLSearchParams(window.location.search);
       const refCode = urlParams.get('ref');
-      
+
       console.log('Raw ref parameter:', refCode);
-      
+
       if (refCode) {
         // Remove quotes if present and validate
         const cleanRefCode = refCode.replace(/['"]/g, '').trim();
         console.log('Cleaned ref code:', cleanRefCode);
-        
+
         // More flexible validation (alphanumeric, 3-15 characters)
         if (/^[a-zA-Z0-9]{3,15}$/.test(cleanRefCode)) {
           console.log('✅ Referral code validated successfully:', cleanRefCode);
-          
+
           // Store in sessionStorage for persistence
           sessionStorage.setItem('referralCode', cleanRefCode);
-          
+
           // Clean URL by removing the ref parameter
           try {
             const newUrl = new URL(window.location);
@@ -405,7 +396,7 @@
           } catch (e) {
             console.log('Could not clean URL:', e);
           }
-          
+
           return cleanRefCode;
         } else {
           console.log('❌ Referral code validation failed for:', cleanRefCode);
@@ -413,7 +404,7 @@
       } else {
         console.log('No ref parameter found in URL');
       }
-      
+
       // Check if we have a stored referral code
       const storedCode = sessionStorage.getItem('referralCode');
       console.log('Stored referral code:', storedCode);
@@ -422,16 +413,16 @@
 
     function handleReferralCode(refCode) {
       console.log('Handling referral code:', refCode);
-      
+
       if (refCode) {
         // Show referral notice
         console.log('Showing referral notice...');
         showReferralNotice(refCode);
-        
+
         // Pre-fill referral code field
         const referralInput = document.querySelector('input[name="referralCode"]');
         console.log('Referral input field:', referralInput);
-        
+
         if (referralInput) {
           referralInput.value = refCode;
           referralInput.readOnly = true;
@@ -441,11 +432,11 @@
         } else {
           console.log('❌ Referral input field not found');
         }
-        
+
         // Hide the referral input section if code is applied
         const referralSection = document.getElementById('referral-input-section');
         console.log('Referral section:', referralSection);
-        
+
         if (referralSection) {
           referralSection.style.display = 'none';
           console.log('✅ Referral section hidden');
@@ -460,11 +451,11 @@
     function showReferralNotice(refCode) {
       const referralNotice = document.getElementById('referral-notice');
       const referralCodeValue = document.getElementById('referral-code-value');
-      
+
       if (referralNotice && referralCodeValue) {
         referralCodeValue.textContent = refCode;
         referralNotice.style.display = 'block';
-        
+
         // Add entrance animation
         setTimeout(() => {
           referralNotice.classList.add('fade-in');
@@ -479,7 +470,7 @@
       if (referralInput && referralInput.value) {
         return referralInput.value;
       }
-      
+
       // Fallback to stored referral code
       return sessionStorage.getItem('referralCode');
     }
@@ -487,11 +478,11 @@
     // Load header and footer (with error checking)
     const headerContainer = document.getElementById('header-container');
     const footerContainer = document.getElementById('footer-container');
-    
+
     if (headerContainer && typeof headerHTML !== 'undefined') {
       headerContainer.innerHTML = headerHTML;
     }
-    
+
     if (footerContainer && typeof footerHTML !== 'undefined') {
       footerContainer.innerHTML = footerHTML;
     }
@@ -510,11 +501,11 @@
     // Initialize registration page
     document.addEventListener('DOMContentLoaded', function () {
       console.log('🚀 DOM Content Loaded - Initializing registration page');
-      
+
       // Extract and handle referral code first
       const referralCode = extractReferralCode();
       handleReferralCode(referralCode);
-      
+
       // Initialize other functions with error handling
       try {
         if (typeof initializeRegistrationPage === 'function') {
@@ -525,7 +516,7 @@
       } catch (e) {
         console.log('Error initializing registration page:', e);
       }
-      
+
       try {
         initializeEnhancedUI();
       } catch (e) {

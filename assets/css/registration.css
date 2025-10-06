@@ -63,7 +63,8 @@
 .registration-section {
   background: url('../images/hero/bg.png') center center no-repeat;
   background-size: cover;
-  background-attachment: scroll; /* Better for mobile performance */
+  background-attachment: scroll;
+  /* Better for mobile performance */
   min-height: 100vh;
   position: relative;
   padding: 1rem 0;
@@ -678,17 +679,17 @@
   transition: all 0.2s ease;
 }
 
-.form-check-input:checked + .checkbox-design {
+.form-check-input:checked+.checkbox-design {
   background: #37a3fe;
   border-color: #37a3fe;
 }
 
-.form-check-input:checked + .checkbox-design .check-icon {
+.form-check-input:checked+.checkbox-design .check-icon {
   opacity: 1;
   transform: scale(1);
 }
 
-.form-check-input:focus + .checkbox-design {
+.form-check-input:focus+.checkbox-design {
   border-color: #37a3fe;
   box-shadow: 0 0 0 3px rgba(55, 163, 254, 0.1);
 }
@@ -1346,6 +1347,7 @@
 
 /* Mobile Performance and UX Optimizations */
 @media (max-width: 767.98px) {
+
   /* Reduce animations for better mobile performance */
   .registration-card::after,
   .registration-card::before,
@@ -1388,6 +1390,7 @@
 
 /* Accessibility improvements for mobile */
 @media (max-width: 575.98px) {
+
   /* Ensure all interactive elements meet minimum size requirements */
   .form-check-label a,
   .login-link a,
@@ -1473,7 +1476,7 @@
   justify-content: center !important;
 }
 
-.registration-section .row > div {
+.registration-section .row>div {
   max-width: none !important;
   width: 100% !important;
   padding: 0 !important;
@@ -1922,9 +1925,17 @@
 }
 
 @keyframes successPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Disabled state for resend button */
@@ -1947,6 +1958,7 @@
     transform: translateX(0);
     opacity: 1;
   }
+
   to {
     transform: translateX(-100%);
     opacity: 0;
@@ -1958,6 +1970,7 @@
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -2076,6 +2089,7 @@
     opacity: 1;
     transform: translateX(0);
   }
+
   to {
     opacity: 0;
     transform: translateX(-30px);
@@ -2087,6 +2101,7 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -2123,20 +2138,20 @@
     padding: 0.75rem !important;
     margin: 0.25rem !important;
   }
-  
+
   .step-indicator {
     gap: 0.25rem !important;
   }
-  
+
   .step-text {
     font-size: 0.6rem !important;
   }
-  
+
   .resend-actions {
     flex-direction: column !important;
     gap: 0.25rem !important;
   }
-  
+
   .resend-actions .btn {
     width: 100% !important;
     margin: 0 !important;
