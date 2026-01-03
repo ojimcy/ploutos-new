@@ -238,6 +238,7 @@ const translations = {
     comingSoon: 'Coming Soon',
 
     // Hero Section
+    heroTitle: 'Digital Finance, Reimagined',
     heroTagline: 'Your gateway to premium banking, smart crypto trading, and global financial freedom',
     exploreProducts: 'Explore Products',
 
@@ -744,6 +745,7 @@ const translations = {
     comingSoon: 'Bientôt Disponible',
 
     // Hero Section
+    heroTitle: 'La Finance Numérique, Réinventée',
     heroTagline: 'Votre passerelle vers la banque premium, le trading crypto intelligent et la liberté financière mondiale',
     exploreProducts: 'Explorer les Produits',
 
