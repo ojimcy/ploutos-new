@@ -8,34 +8,36 @@ const headerHTML = `
             <div class="row align-items-center d-flex">
                 <div class="col-lg-3">
                     <div class="header-logo">
-                        <a class="main-logo" href="/"><img src="assets/images/logo.png" alt="Ploutos" /></a>
-                        <a class="stiky-logo" href="/"><img src="assets/images/logo.png" alt="Ploutos" /></a>
+                        <a class="main-logo" href="/"><img src="assets/images/logo-new.png" alt="PloutosLabs" /></a>
+                        <a class="stiky-logo" href="/"><img src="assets/images/logo-new.png" alt="PloutosLabs" /></a>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <nav class="cryptozen_menu">
                         <div class="header-menu">
                             <ul class="nav_scroll">
-                                <li><a href="/#home" data-translate="home">Home</a></li>
-                                <li><a href="/#virtual-cards" data-translate="virtualCards">Virtual Cards</a></li>
-                                <li><a href="/#faq" data-translate="faq">FAQ</a></li>
+                                <li><a href="/" data-translate="home">Home</a></li>
+                                <li><a href="/about.html" data-translate="about">About</a></li>
                                 <li>
-                                    <a href="#" class="smart-app-link" data-translate="airdrop">Airdrop</a>
-                                </li>
-                                <li>
-                                    <a href="#" data-translate="trade">Trade <i class="fas fa-angle-down"></i></a>
+                                    <a href="#" data-translate="products">Products <i class="fas fa-angle-down"></i></a>
                                     <div class="sub-menu">
                                         <ul>
                                             <li>
-                                                <a href="trade/mainnet.html" target="_blank">Mainnet
-                                                </a>
+                                                <a href="/products/skydda-wallet.html" data-translate="skyddaWallet">Skydda Wallet</a>
                                             </li>
                                             <li>
-                                                <a href="trade/testnet.html" target="_blank">Testnet</a>
+                                                <a href="/products/kavipay.html" data-translate="kavipay">KaviPay</a>
+                                            </li>
+                                            <li>
+                                                <a href="/products/virtual-card.html" data-translate="virtualCard">Virtual Card</a>
+                                            </li>
+                                            <li>
+                                                <a href="/products/coming-soon.html" data-translate="comingSoon">Coming Soon</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
+                                <li><a href="/faq.html" data-translate="faq">FAQ</a></li>
                             </ul>
                             <div class="header-btn">
                                 <a href="#" onclick="openWhitepaper()" data-translate="whitepaper">Whitepaper</a>
@@ -53,31 +55,33 @@ const headerHTML = `
         </div>
     </div>
 
-    <!-- mobile menu seection -->
+    <!-- mobile menu section -->
     <div class="mobile-menu-area d-sm-block d-md-block d-lg-none">
         <div class="mobile-menu">
             <nav class="itsoft_menu">
                 <ul class="nav_scroll">
-                    <li><a href="/#home" data-translate="home">Home</a></li>
-                    <li><a href="/#virtual-cards" data-translate="virtualCards">Virtual Cards</a></li>
-                    <li><a href="/#faq" data-translate="faq">FAQ</a></li>
+                    <li><a href="/" data-translate="home">Home</a></li>
+                    <li><a href="/about.html" data-translate="about">About</a></li>
                     <li>
-                        <a href="#" class="smart-app-link" data-translate="airdrop">Airdrop</a>
-                    </li>
-                    <li>
-                        <a href="#" data-translate="trade">Trade <i class="fas fa-angle-down"></i></a>
+                        <a href="#" data-translate="products">Products <i class="fas fa-angle-down"></i></a>
                         <div class="sub-menu">
                             <ul>
                                 <li>
-                                    <a href="/trade/mainnet.html" data-translate="mainnet">Mainnet
-                                    </a>
+                                    <a href="/products/skydda-wallet.html" data-translate="skyddaWallet">Skydda Wallet</a>
                                 </li>
                                 <li>
-                                    <a href="/trade/testnet.html" data-translate="testnet">Testnet</a>
+                                    <a href="/products/kavipay.html" data-translate="kavipay">KaviPay</a>
+                                </li>
+                                <li>
+                                    <a href="/products/virtual-card.html" data-translate="virtualCard">Virtual Card</a>
+                                </li>
+                                <li>
+                                    <a href="/products/coming-soon.html" data-translate="comingSoon">Coming Soon</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                    <li><a href="/faq.html" data-translate="faq">FAQ</a></li>
                     <li>
                         <a href="#" onclick="openWhitepaper()" data-translate="whitepaper">Whitepaper</a>
                     </li>
@@ -95,16 +99,16 @@ const footerHTML = `
     <div class="footer pt-100">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6" data-cue="zoomIn">
+                <div class="col-lg-4 col-md-6">
                     <div class="footer-location-box">
                         <div class="footer-logo">
-                            <img width="150" src="assets/images/logo.png" alt="Footer-logo" />
+                            <img width="180" src="assets/images/logo-new.png" alt="PloutosLabs" />
                         </div>
                         <div class="footer-content">
                             <p data-translate="footerContent">
-                                Ploutos Labs is dedicated to providing innovative blockchain
-                                solutions with a focus on security, usability, and community
-                                engagement. Join us on this revolutionary journey.
+                                PloutosLabs is a comprehensive fintech ecosystem designed to revolutionize
+                                digital finance. Built on the BASE Network, we combine blockchain innovation
+                                with practical financial services.
                             </p>
                         </div>
                     </div>
@@ -127,29 +131,29 @@ const footerHTML = `
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6" data-cue="zoomIn">
+                <div class="col-lg-2 col-md-6">
                     <div class="widget">
                         <div class="footer-quick-link">
                             <div class="footer-widget-title">
-                                <h3 data-translate="marketplace">Marketplace</h3>
+                                <h3 data-translate="products">Products</h3>
                             </div>
                             <div class="footer-quick-link-list">
                                 <ul>
                                     <li>
-                                        <a href="/#tokenomics" data-translate="tokenomics">Tokenomics</a>
+                                        <a href="/products/skydda-wallet.html" data-translate="skyddaWallet">Skydda Wallet</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="openWhitepaper()" data-translate="whitepaper">Whitepaper</a>
+                                        <a href="/products/kavipay.html" data-translate="kavipay">KaviPay</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="smart-app-link" data-translate="airdrop">Airdrop</a>
+                                        <a href="/products/virtual-card.html" data-translate="virtualCard">Virtual Card</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6" data-cue="zoomIn">
+                <div class="col-lg-2 col-md-6">
                     <div class="widget">
                         <div class="footer-quick-link-list">
                             <div class="footer-widget-title">
@@ -157,18 +161,18 @@ const footerHTML = `
                             </div>
                             <div class="footer-quick-link-list">
                                 <ul>
-                                    <li><a href="#/" data-translate="home">Home</a></li>
-                                    <li><a href="/#About" data-translate="about">About</a></li>
+                                    <li><a href="/" data-translate="home">Home</a></li>
+                                    <li><a href="/about.html" data-translate="about">About</a></li>
+                                    <li><a href="/faq.html" data-translate="faq">FAQ</a></li>
                                     <li>
-                                        <a href="https://drive.google.com/drive/folders/1cEZl7OjrG9BPjpRJVII2FUq2b3kxqDuJ"
-                                            data-translate="mediaKit">Media Kit</a>
+                                        <a href="#" onclick="openWhitepaper()" data-translate="whitepaper">Whitepaper</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 p-0" data-cue="zoomIn">
+                <div class="col-lg-2 col-md-6 p-0">
                     <div class="widget">
                         <div class="footer-quick-link-list">
                             <div class="footer-widget-title">
@@ -182,34 +186,31 @@ const footerHTML = `
                                     <li>
                                         <a href="https://t.me/ploutoslabannouncement" data-translate="announcement">Announcement</a>
                                     </li>
+                                    <li>
+                                        <a href="https://drive.google.com/drive/folders/1cEZl7OjrG9BPjpRJVII2FUq2b3kxqDuJ" target="_blank" data-translate="mediaKit">Media Kit</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row upper11 mt-50 align-items-center">
-                    <div class="col-lg-6 col-md-6" data-cue="zoomIn">
+                    <div class="col-lg-6 col-md-6">
                         <div class="footer-copyright-text">
                             <p class="text-white" data-translate="copyright">
-                                Copyright © Ploutoslabs all rights reserved.
+                                Copyright © PloutosLabs. All rights reserved.
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6" data-cue="zoomIn">
+                    <div class="col-lg-6 col-md-6">
                         <div class="footer-copyright-content">
                             <div class="footer-sicial-address-link">
                                 <ul>
                                     <li>
-                                        <a href="terms.html" data-translate="termsCondition">Terms Condition</a>
+                                        <a href="/terms.html" data-translate="termsCondition">Terms & Conditions</a>
                                     </li>
                                     <li>
-                                        <a href="privacy.html" data-translate="privacyPolicy">Privacy Policy</a>
-                                    </li>
-                                    <li>
-                                        <a href="eula.html" data-translate="eula">EULA</a>
-                                    </li>
-                                    <li>
-                                        <a href="delete-account.html" data-translate="deleteAccount">Delete Account</a>
+                                        <a href="/privacy.html" data-translate="privacyPolicy">Privacy Policy</a>
                                     </li>
                                 </ul>
                             </div>
@@ -324,48 +325,61 @@ function getBasePath() {
     return currentPath === '/' || currentPath.endsWith('/index.html') ? './' : './';
 }
 
+// Function to get the base path for assets based on current page depth
+function getAssetBasePath() {
+    const currentPath = window.location.pathname;
+    // Check if we're in a subdirectory (like /products/)
+    if (currentPath.includes('/products/')) {
+        return '../';
+    }
+    return '';
+}
+
+// Function to update asset paths for header/footer images
+function updateAssetPaths() {
+    const basePath = getAssetBasePath();
+
+    // Update header logo images
+    const headerLogos = document.querySelectorAll('.header-logo img');
+    headerLogos.forEach(img => {
+        if (!img.src.includes('http')) {
+            img.src = basePath + 'assets/images/logo-new.png';
+        }
+    });
+
+    // Update footer logo
+    const footerLogo = document.querySelector('.footer-logo img');
+    if (footerLogo && !footerLogo.src.includes('http')) {
+        footerLogo.src = basePath + 'assets/images/logo-new.png';
+    }
+}
+
 // Function to update navigation links based on current page
 function updateNavigationLinks() {
     const currentPath = window.location.pathname;
-    const isHomePage = currentPath === '/' || currentPath.endsWith('/index.html');
+    const isHomePage = currentPath === '/' || currentPath.endsWith('/index.html') || currentPath === '/index.html';
+    const isInSubdir = currentPath.includes('/products/');
+    const basePath = isInSubdir ? '..' : '';
 
     // Update logo links
     const logoLinks = document.querySelectorAll('.header-logo a');
     logoLinks.forEach(link => {
-        link.href = isHomePage ? '#home' : './index.html';
+        link.href = basePath + '/';
     });
 
-    // Update navigation links
-    const homeLink = document.querySelector('a[href="/#home"]');
-    if (homeLink) {
-        homeLink.href = isHomePage ? '#home' : './index.html';
+    // Update all navigation and footer links for subdirectory pages
+    if (isInSubdir) {
+        const allLinks = document.querySelectorAll('a[href^="/"]');
+        allLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('/') && !href.startsWith('//')) {
+                link.href = '..' + href;
+            }
+        });
     }
 
-    const aboutLink = document.querySelector('a[href="/#about"]');
-    if (aboutLink) {
-        aboutLink.href = isHomePage ? '#about' : './index.html#about';
-    }
-
-    const faqLink = document.querySelector('a[href="/#faq"]');
-    if (faqLink) {
-        faqLink.href = isHomePage ? '#faq' : './index.html#faq';
-    }
-
-    // Update mobile menu links as well
-    const mobileHomeLink = document.querySelector('.mobile-menu a[href="/#home"]');
-    if (mobileHomeLink) {
-        mobileHomeLink.href = isHomePage ? '#home' : './index.html';
-    }
-
-    const mobileAboutLink = document.querySelector('.mobile-menu a[href="/#about"]');
-    if (mobileAboutLink) {
-        mobileAboutLink.href = isHomePage ? '#about' : './index.html#about';
-    }
-
-    const mobileFaqLink = document.querySelector('.mobile-menu a[href="/#faq"]');
-    if (mobileFaqLink) {
-        mobileFaqLink.href = isHomePage ? '#faq' : './index.html#faq';
-    }
+    // Update asset paths
+    updateAssetPaths();
 }
 
 // Function to load header
@@ -386,8 +400,29 @@ function loadFooter() {
     }
 }
 
+// Function to initialize scroll-to-top functionality
+function initScrollToTop() {
+    // Show/hide button on scroll
+    $(window).on('scroll', function () {
+        var scrolled = $(window).scrollTop();
+        if (scrolled > 300) {
+            $('.go-top').addClass('active');
+        } else {
+            $('.go-top').removeClass('active');
+        }
+    });
+
+    // Scroll to top on click
+    $('.go-top').on('click', function () {
+        $('html, body').animate({ scrollTop: 0 }, 800);
+    });
+}
+
 // Initialize components when DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
     loadHeader();
     loadFooter();
+
+    // Initialize scroll-to-top after footer is loaded
+    setTimeout(initScrollToTop, 100);
 });
