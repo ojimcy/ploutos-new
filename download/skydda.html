@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Skydda Wallet - PloutosLabs</title>
+    <link rel="icon" type="image/png" href="../assets/images/fav-icon/favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1033 0%, #1a1a4a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 400px;
+        }
+        .logo {
+            width: 120px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #37a3fe;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .loading-text {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        .store-buttons {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .store-btn:hover {
+            transform: scale(1.05);
+        }
+        .store-btn img {
+            height: 40px;
+        }
+        .store-btn.playstore {
+            background: #fff;
+        }
+        .store-btn.appstore {
+            background: #000;
+        }
+        .manual-select {
+            margin-top: 30px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+        .manual-select a {
+            color: #37a3fe;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/assets/images/logo-new.png" alt="PloutosLabs" class="logo">
+        <h1>Skydda Wallet</h1>
+        <p class="subtitle">Your Gateway to Decentralized Finance</p>
+
+        <div id="loading">
+            <div class="spinner"></div>
+            <p class="loading-text">Detecting your device...</p>
+        </div>
+
+        <div class="store-buttons" id="store-buttons">
+            <a href="#" id="playstore-btn" class="store-btn playstore">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+            </a>
+            <a href="#" id="appstore-btn" class="store-btn appstore">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on App Store">
+            </a>
+        </div>
+
+        <p class="manual-select" id="manual-select" style="display: none;">
+            Or select your platform above
+        </p>
+    </div>
+
+    <script>
+        // CONFIGURE THESE URLs WHEN AVAILABLE
+        const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=io.skyddawallet'; // TODO: Update with actual URL
+        const APP_STORE_URL = 'https://apps.apple.com/app/skydda-wallet'; // TODO: Update with actual URL
+
+        // Detect device and redirect
+        function detectAndRedirect() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Update button hrefs
+            document.getElementById('playstore-btn').href = PLAY_STORE_URL;
+            document.getElementById('appstore-btn').href = APP_STORE_URL;
+
+            // Check for Android
+            if (/android/i.test(userAgent)) {
+                setTimeout(() => {
+                    window.location.href = PLAY_STORE_URL;
+                }, 1500);
+                return;
+            }
+
+            // Check for iOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                setTimeout(() => {
+                    window.location.href = APP_STORE_URL;
+                }, 1500);
+                return;
+            }
+
+            // Desktop or unknown - show both options
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('store-buttons').style.display = 'flex';
+                document.getElementById('manual-select').style.display = 'block';
+            }, 1000);
+        }
+
+        // Run on page load
+        detectAndRedirect();
+    </script>
+</body>
+</html>

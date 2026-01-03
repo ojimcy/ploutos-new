@@ -8,8 +8,8 @@ const headerHTML = `
             <div class="row align-items-center d-flex">
                 <div class="col-lg-3">
                     <div class="header-logo">
-                        <a class="main-logo" href="/"><img src="assets/images/logo-new.png" alt="PloutosLabs" /></a>
-                        <a class="stiky-logo" href="/"><img src="assets/images/logo-new.png" alt="PloutosLabs" /></a>
+                        <a class="main-logo" href="/"><img src="/assets/images/logo-new.png" alt="PloutosLabs" /></a>
+                        <a class="stiky-logo" href="/"><img src="/assets/images/logo-new.png" alt="PloutosLabs" /></a>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -102,7 +102,7 @@ const footerHTML = `
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-location-box">
                         <div class="footer-logo">
-                            <img width="180" src="assets/images/logo-new.png" alt="PloutosLabs" />
+                            <img width="180" src="/assets/images/logo-new.png" alt="PloutosLabs" />
                         </div>
                         <div class="footer-content">
                             <p data-translate="footerContent">
@@ -337,20 +337,18 @@ function getAssetBasePath() {
 
 // Function to update asset paths for header/footer images
 function updateAssetPaths() {
-    const basePath = getAssetBasePath();
-
-    // Update header logo images
+    // Using absolute paths now, so this is mainly for fallback
     const headerLogos = document.querySelectorAll('.header-logo img');
     headerLogos.forEach(img => {
-        if (!img.src.includes('http')) {
-            img.src = basePath + 'assets/images/logo-new.png';
+        if (!img.src.includes('http') && !img.src.startsWith('/')) {
+            img.src = '/assets/images/logo-new.png';
         }
     });
 
     // Update footer logo
     const footerLogo = document.querySelector('.footer-logo img');
-    if (footerLogo && !footerLogo.src.includes('http')) {
-        footerLogo.src = basePath + 'assets/images/logo-new.png';
+    if (footerLogo && !footerLogo.src.includes('http') && !footerLogo.src.startsWith('/')) {
+        footerLogo.src = '/assets/images/logo-new.png';
     }
 }
 
