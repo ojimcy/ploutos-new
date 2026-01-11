@@ -38,6 +38,7 @@ const headerHTML = `
                                     </div>
                                 </li>
                                 <li><a href="/faq.html" data-translate="faq">FAQ</a></li>
+                                <li><a href="/careers.html" data-translate="careers">Careers</a></li>
                             </ul>
                             <div class="header-btn">
                                 <a href="#" onclick="openWhitepaper()" data-translate="whitepaper">Whitepaper</a>
@@ -82,6 +83,7 @@ const headerHTML = `
                         </div>
                     </li>
                     <li><a href="/faq.html" data-translate="faq">FAQ</a></li>
+                    <li><a href="/careers.html" data-translate="careers">Careers</a></li>
                     <li>
                         <a href="#" onclick="openWhitepaper()" data-translate="whitepaper">Whitepaper</a>
                     </li>
@@ -164,6 +166,7 @@ const footerHTML = `
                                     <li><a href="/" data-translate="home">Home</a></li>
                                     <li><a href="/about.html" data-translate="about">About</a></li>
                                     <li><a href="/faq.html" data-translate="faq">FAQ</a></li>
+                                    <li><a href="/careers.html" data-translate="careers">Careers</a></li>
                                     <li>
                                         <a href="#" onclick="openWhitepaper()" data-translate="whitepaper">Whitepaper</a>
                                     </li>

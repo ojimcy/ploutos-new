@@ -5,6 +5,9 @@ window.addEventListener("DOMContentLoaded", function () {
   // var button = document.getElementById("my-form-button");
   var status = document.getElementById("status");
 
+  // Only attach event listener if form exists on the page
+  if (!form) return;
+
   // Success and Error functions for after the form is submitted
 
   function success() {
