@@ -19,9 +19,9 @@
   --secondary-purple: #e230cc;
 
   /* Background Colors */
-  --bg-primary: #0B0B47;
-  --bg-secondary: #06174f;
-  --bg-card: #081b5e;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #f8f9fa;
 
   /* Text Colors */
   --text-primary: #ffffff;
@@ -106,8 +106,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(-9deg, #2a0365 30%, #03224a 70%);
-  opacity: 0.95;
+  background: linear-gradient(-9deg, #f0f9ff 30%, #dba717 70%);
+  opacity: 0.1;
   z-index: 0;
 }
 
@@ -189,12 +189,15 @@
     transform: translateY(0px) rotate(0deg);
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     transform: translateY(-100vh) rotate(360deg);
     opacity: 0;
@@ -213,10 +216,10 @@
 }
 
 .mobile-header .language-selector select {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-small);
-  color: var(--text-primary);
+  color: var(--text-dark);
   padding: var(--spacing-sm) var(--spacing-md);
   font-size: 14px;
   font-family: var(--font-primary);
@@ -235,7 +238,7 @@
 
 .mobile-header .language-selector select option {
   background: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--text-dark);
 }
 
 @media (min-width: 768px) {
@@ -704,17 +707,17 @@
   transition: all 0.2s ease;
 }
 
-.form-check-input:checked + .checkbox-design {
+.form-check-input:checked+.checkbox-design {
   background: var(--primary-blue);
   border-color: var(--primary-blue);
 }
 
-.form-check-input:checked + .checkbox-design .check-icon {
+.form-check-input:checked+.checkbox-design .check-icon {
   opacity: 1;
   transform: scale(1);
 }
 
-.form-check-input:focus + .checkbox-design {
+.form-check-input:focus+.checkbox-design {
   border-color: var(--primary-blue);
   box-shadow: 0 0 0 3px rgba(55, 163, 254, 0.1);
 }
@@ -996,6 +999,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -1006,6 +1010,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1490,7 +1495,8 @@
 }
 
 /* High DPI Displays - Retina optimization */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
   .registration-logo {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;

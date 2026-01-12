@@ -323,17 +323,7 @@ $(document).ready(function () {
     }
   });
 
-  // sticky
-  var wind = $(window);
-  var sticky = $("#sticky-header");
-  wind.on("scroll", function () {
-    var scroll = wind.scrollTop();
-    if (scroll < 100) {
-      sticky.removeClass("sticky-nav");
-    } else {
-      sticky.addClass("sticky-nav");
-    }
-  });
+
 
   //Header Search
   if ($(".search-box-outer").length) {

@@ -43,12 +43,13 @@ Version: 0.1
             start header area
     -=================================*/
 .header-area {
-  background: transparent;
+  background: #ffffff;
   padding: 2px 0px 5px;
   position: relative;
   margin-bottom: -102px;
   z-index: 2;
-  border-bottom: 1px solid#2D305B;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .sticky-nav {
@@ -94,7 +95,7 @@ Version: 0.1
   text-transform: capitalize;
   transition: 0.5s;
   letter-spacing: 1px;
-  color: #fff;
+  color: #0a1f44;
   font-weight: 600;
 }
 
@@ -277,7 +278,7 @@ a.stiky-logo img {
 }
 
 .header-btn a {
-  color: #fff;
+  color: #ffffff;
   display: inline-block;
   padding: 10px 33px;
   font-size: 15px;
@@ -286,7 +287,8 @@ a.stiky-logo img {
   overflow: hidden;
   font-weight: 600;
   border-radius: 30px;
-  border: 1px solid#535578;
+  border: none;
+  background: #37a3fe;
 }
 
 .header-btn a i {
@@ -381,7 +383,7 @@ html {
  slider section
 ===================================*/
 .slider-area {
-  background: url(assets/images/hero/bg.png);
+  background: #ffffff;
   height: 949px;
   position: relative;
   z-index: 1;
@@ -390,12 +392,14 @@ html {
 .slider-content h1 {
   font-size: 70px;
   margin: 0 0 14px;
+  color: #0a1f44;
 }
 
 .slider-content h4 {
   font-size: 40px;
   font-weight: 200;
   margin: 0 0 0;
+  color: #1e3a5f;
 }
 
 .slider-content span {
@@ -407,6 +411,7 @@ html {
   margin: 23px 0 36px;
   width: 99%;
   font-weight: 500;
+  color: #1e3a5f;
 }
 
 .slider-button {
@@ -425,6 +430,7 @@ html {
   overflow: hidden;
   position: relative;
   z-index: 1;
+  color: #ffffff;
 }
 
 .slider-button a:after {
@@ -499,6 +505,7 @@ html {
   top: 0;
   left: 0;
   z-index: -1;
+  display: none;
 }
 
 .hero-shape2 {
@@ -1726,7 +1733,7 @@ span.another {
 
 /*service section*/
 .service-section {
-  background: url(assets/images/service/circle.jpg);
+  background: #f8f9fa;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -1829,7 +1836,7 @@ span.another {
 
 /*service section style three*/
 .service-section.style-three {
-  background: url(assets/images/new/service-bg.png);
+  background: #ffffff;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1841,10 +1848,11 @@ span.another {
   margin-bottom: 30px;
   padding: 21px 33px 21px;
   right: 0;
-  background: rgb(35, 24, 117, 0.3);
-  box-shadow: 6px 0 21px rgb(0 0 0 / 14%);
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: 0.5s;
   z-index: 1;
+  border-radius: 8px;
 }
 
 .service-section.style-three .single-service-box:before {
@@ -1855,9 +1863,9 @@ span.another {
   height: 100%;
   width: 0;
   transition: 0.5s;
-  border-radius: 4px;
+  border-radius: 8px;
   z-index: -1;
-  background: -webkit-linear-gradient(-9deg, #2a0365 30%, #03224a 70%);
+  background: linear-gradient(-9deg, #37a3fe 30%, #0194fc 70%);
 }
 
 .service-section.style-three .single-service-box:hover:before {
@@ -2222,6 +2230,7 @@ a.paginate_button {
   overflow: hidden;
   transition: 0.5s;
   font-weight: 600;
+  color: #ffffff;
 }
 
 .about-btn a:hover {
@@ -2279,7 +2288,7 @@ a.paginate_button {
 
 /*about style three*/
 .about-section.style-three {
-  background: url(assets/images/new/bg.png);
+  background: #f8f9fa;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -2346,10 +2355,11 @@ a.paginate_button {
 }
 
 .dreamit-section-title.two .dreamit-section-sub-title h5 {
-  background: #081b5e;
+  background: rgba(55, 163, 254, 0.1);
   padding: 11px 29px;
   left: 0;
   border-radius: 4px;
+  color: #37a3fe;
 }
 
 .dreamit-section-title.two .dreamit-section-sub-title h5:before {
@@ -2372,6 +2382,7 @@ a.paginate_button {
   top: 17%;
   left: 10%;
   z-index: -1;
+  display: none;
 }
 
 /*choose section*/
@@ -4244,7 +4255,7 @@ h2.other {
 
 /*faq section*/
 .faq-section {
-  background: #080a3d;
+  background: #ffffff;
 }
 
 /*faq section style five*/
@@ -5476,7 +5487,7 @@ a.othrer3 {
 
 /*breatcome area*/
 .breatcome-area {
-  background: url(assets/images/footer/footer.jpg);
+  background: #f4f7fa;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -5501,7 +5512,7 @@ a.othrer3 {
 }
 
 .breatcome-content-text ul li a:hover {
-  color: #fff;
+  color: #37a3fe;
 }
 
 .breatcome-content-text ul li {
@@ -5509,7 +5520,7 @@ a.othrer3 {
 }
 
 .breatcome-content-text ul li span {
-  color: #fff;
+  color: #1e3a5f;
   font-weight: 600;
 }
 
@@ -5861,7 +5872,7 @@ button.btn2 {
 
 /*start footer section*/
 .footer {
-  background: url(assets/images/footer/footer.jpg);
+  background: #f8f9fa;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -5869,11 +5880,13 @@ button.btn2 {
 
 .footer-content p {
   margin: 21px 0 27px;
+  color: #1e3a5f;
 }
 
 .footer-widget-title h3 {
   font-size: 20px;
   margin: 0 0 39px;
+  color: #0a1f44;
 }
 
 .footer-quick-link-list ul li {
@@ -5882,7 +5895,7 @@ button.btn2 {
 }
 
 .footer-quick-link-list ul li a {
-  color: #a2bbd2;
+  color: #1e3a5f;
   display: inline-block;
   transition: 0.5s;
   position: relative;
@@ -5892,7 +5905,7 @@ button.btn2 {
       #37a3fe,
       #37a3fe,
       50%,
-      #a2bbd2 50%);
+      #1e3a5f 50%);
   background-size: 200% 100%;
   background-position: 100%;
   -webkit-text-fill-color: transparent;
@@ -5911,12 +5924,13 @@ button.btn2 {
   height: 1px;
   width: 16px;
   left: -24px;
-  background: #a2bbd2;
+  background: #1e3a5f;
 }
 
 .social-content h3 {
   font-size: 20px;
   margin: 0 0 0;
+  color: #0a1f44;
 }
 
 .footer-about-social-icon ul li {
@@ -5966,13 +5980,13 @@ button.btn2 {
 }
 
 input.subscribe-mail-box {
-  background: #1c2960;
-  border: none;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   padding: 14px 21px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   outline: 0;
-  color: #fff;
+  color: #1e3a5f;
 }
 
 button.subscribe-button {
@@ -6098,7 +6112,7 @@ button.subscribe-button {
 }
 
 .subscribe-area ::placeholder {
-  color: #fff;
+  color: #1e3a5f;
   font-size: 15px;
 }
 
@@ -7174,10 +7188,10 @@ div#particles .slider-area.style-five:before {
 }
 
 .language-selector select {
-  background: none;
-  border: 1px solid #525578;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   padding: 8px 35px 8px 15px;
-  color: #fff;
+  color: #0a1f44;
   cursor: pointer;
   font-size: 14px;
   border-radius: 30px;
@@ -7197,8 +7211,8 @@ div#particles .slider-area.style-five:before {
 
 /* Style the options */
 .language-selector select option {
-  background: #0a1f62;
-  color: #fff;
+  background: #ffffff;
+  color: #0a1f44;
   padding: 10px;
 }
 
@@ -7388,10 +7402,12 @@ div#particles .slider-area.style-five:before {
     transform: scale(1);
     box-shadow: 0 2px 8px rgba(255, 152, 0, 0.4);
   }
+
   50% {
     transform: scale(1.05);
     box-shadow: 0 2px 12px rgba(255, 152, 0, 0.6);
   }
+
   100% {
     transform: scale(1);
     box-shadow: 0 2px 8px rgba(255, 152, 0, 0.4);
@@ -7438,6 +7454,7 @@ div#particles .slider-area.style-five:before {
     transform: translateY(-30px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -8795,6 +8812,7 @@ div#particles .slider-area.style-five:before {
 .virtual-card-btn .dreamit-btn a:hover i {
   transform: translateX(5px);
 }
+
 /* Delete Account Page Styles */
 .delete-account-section {
   background: linear-gradient(135deg, #0a0b16 0%, #1a1b2e 100%);
@@ -9105,43 +9123,43 @@ div#particles .slider-area.style-five:before {
   .alert-box {
     padding: 20px;
   }
-  
+
   .alert-box .alert-icon {
     float: none;
     text-align: center;
     margin-bottom: 15px;
     margin-right: 0;
   }
-  
+
   .deletion-method-card {
     margin-bottom: 30px;
   }
-  
+
   .method-icon {
     width: 60px;
     height: 60px;
     font-size: 28px;
   }
-  
+
   .method-header h3 {
     font-size: 20px;
   }
-  
+
   .contact-header .contact-icon {
     width: 80px;
     height: 80px;
     font-size: 36px;
   }
-  
+
   .contact-header h3 {
     font-size: 24px;
   }
-  
+
   .retention-item {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .retention-icon {
     margin: 0 auto 15px;
   }
@@ -9165,7 +9183,7 @@ div#particles .slider-area.style-five:before {
 .hero-video-bg .video-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #0B0B47 0%, #06174f 50%, #081b5e 100%);
+  background: #ffffff;
 }
 
 .hero-video-bg video {
@@ -9205,13 +9223,14 @@ div#particles .slider-area.style-five:before {
 
 /* Product Cards */
 .product-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(55, 163, 254, 0.2);
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 20px;
   padding: 35px 30px;
   text-align: center;
   transition: all 0.4s ease;
   height: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .product-card:hover {
@@ -9231,14 +9250,14 @@ div#particles .slider-area.style-five:before {
 }
 
 .product-content h3 {
-  color: #fff;
+  color: #0a1f44;
   font-size: 22px;
   margin-bottom: 15px;
   font-weight: 600;
 }
 
 .product-content p {
-  color: #a2bbd2;
+  color: #1e3a5f;
   font-size: 15px;
   line-height: 1.7;
   margin-bottom: 20px;
@@ -9255,7 +9274,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .product-link:hover {
-  color: #fff;
+  color: #0194fc;
   gap: 12px;
 }
 
@@ -9265,7 +9284,7 @@ div#particles .slider-area.style-five:before {
 
 /* Coming Soon Cards */
 .coming-soon-title {
-  color: #a2bbd2;
+  color: #1e3a5f;
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -9273,8 +9292,8 @@ div#particles .slider-area.style-five:before {
 }
 
 .coming-soon-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed rgba(55, 163, 254, 0.3);
+  background: #f8f9fa;
+  border: 1px dashed #37a3fe;
   border-radius: 15px;
   padding: 25px 20px;
   text-align: center;
@@ -9282,8 +9301,8 @@ div#particles .slider-area.style-five:before {
 }
 
 .coming-soon-card:hover {
-  border-color: #37a3fe;
-  background: rgba(55, 163, 254, 0.05);
+  border-color: #0194fc;
+  background: rgba(55, 163, 254, 0.08);
 }
 
 .coming-soon-icon {
@@ -9303,7 +9322,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .coming-soon-card h5 {
-  color: #fff;
+  color: #0a1f44;
   font-size: 14px;
   margin-bottom: 10px;
   font-weight: 600;
@@ -9322,7 +9341,7 @@ div#particles .slider-area.style-five:before {
 
 /* Why PloutosLabs Section */
 .why-section {
-  background: linear-gradient(180deg, rgba(6, 23, 79, 0.3) 0%, rgba(11, 11, 71, 0.5) 100%);
+  background: #f8f9fa;
 }
 
 /* Trust Badges */
@@ -9331,12 +9350,13 @@ div#particles .slider-area.style-five:before {
 }
 
 .trust-badge {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(55, 163, 254, 0.2);
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 15px;
   padding: 20px 30px;
   text-align: center;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .trust-badge:hover {
@@ -9348,7 +9368,7 @@ div#particles .slider-area.style-five:before {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #fff;
+  color: #0a1f44;
   text-decoration: none;
 }
 
@@ -9391,11 +9411,11 @@ div#particles .slider-area.style-five:before {
   .mission-box {
     padding: 35px 25px;
   }
-  
+
   .mission-text {
     font-size: 18px;
   }
-  
+
   .product-card {
     margin-bottom: 30px;
   }
@@ -9405,28 +9425,28 @@ div#particles .slider-area.style-five:before {
   .mission-box {
     padding: 30px 20px;
   }
-  
+
   .mission-text {
     font-size: 16px;
   }
-  
+
   .product-icon img {
     width: 60px;
     height: 60px;
   }
-  
+
   .product-content h3 {
     font-size: 18px;
   }
-  
+
   .coming-soon-card h5 {
     font-size: 12px;
   }
-  
+
   .trust-badge {
     padding: 15px 20px;
   }
-  
+
   .trust-badge img {
     width: 30px;
     height: 30px;
@@ -9438,7 +9458,7 @@ div#particles .slider-area.style-five:before {
 -=================================*/
 
 .brchipment-breadcromb-area {
-  background: linear-gradient(135deg, #0f1033 0%, #1a1a4a 100%);
+  background: #fff;
   padding: 150px 0 60px;
   position: relative;
   overflow: hidden;
@@ -9461,7 +9481,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .breadcromb-title h1 {
-  color: #fff;
+  color: #0a1f44;
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 15px;
@@ -9477,13 +9497,11 @@ div#particles .slider-area.style-five:before {
 }
 
 .breadcromb-content-text ul li {
-  color: rgba(255, 255, 255, 0.7);
+  color: #1e3a5f;
   font-size: 16px;
 }
 
 .breadcromb-content-text ul li a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
   transition: color 0.3s ease;
 }
 
@@ -9500,7 +9518,7 @@ div#particles .slider-area.style-five:before {
   width: 100%;
   text-align: left;
   margin: 0 0 0;
-  color: rgba(255, 255, 255, 0.85);
+  color: #1e3a5f;
   font-size: 16px;
   line-height: 1.8;
 }
@@ -9539,7 +9557,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .about-section.style-three .dreamit-section-main-title h2 {
-  color: #fff;
+  color: #0a1f44;
   font-size: 42px;
   font-weight: 700;
   margin-bottom: 25px;
@@ -9548,12 +9566,13 @@ div#particles .slider-area.style-five:before {
 
 /* Mission & Vision Section */
 .mission-vision-section .mission-box {
-  background: rgba(255, 255, 255, 0.05);
+  background: #ffffff;
   border-radius: 20px;
   padding: 40px 30px;
   height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e0e0e0;
   transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .mission-vision-section .mission-box:hover {
@@ -9575,18 +9594,18 @@ div#particles .slider-area.style-five:before {
 
 .mission-vision-section .mission-icon i {
   font-size: 32px;
-  color: #fff;
+  color: #ffffff;
 }
 
 .mission-vision-section .mission-box h3 {
-  color: #fff;
+  color: #0a1f44;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 15px;
 }
 
 .mission-vision-section .mission-box p {
-  color: rgba(255, 255, 255, 0.8);
+  color: #1e3a5f;
   font-size: 16px;
   line-height: 1.7;
 }
@@ -9697,20 +9716,28 @@ div#particles .slider-area.style-five:before {
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.5); }
-  70% { box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 193, 7, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
 }
 
 .roadmap-content {
-  background: rgba(255, 255, 255, 0.05);
+  background: #f8f9fa;
   border-radius: 15px;
   padding: 25px 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e0e0e0;
 }
 
 .roadmap-content h4 {
-  color: #fff;
+  color: #0a1f44;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 15px;
@@ -9723,7 +9750,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .roadmap-content ul li {
-  color: rgba(255, 255, 255, 0.8);
+  color: #1e3a5f;
   font-size: 14px;
   padding: 5px 0;
   padding-left: 20px;
@@ -9747,8 +9774,8 @@ div#particles .slider-area.style-five:before {
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
+  background: rgba(10, 31, 68, 0.1);
+  color: #0a1f44;
 }
 
 .roadmap-status.completed {
@@ -9763,15 +9790,15 @@ div#particles .slider-area.style-five:before {
 
 /* CTA Section */
 .cta-section {
-  background: linear-gradient(135deg, #0f1033 0%, #1a1a4a 100%);
+  background: #fff;
 }
 
 .cta-section .dreamit-section-main-title h2 {
-  color: #fff;
+  color: #0a1f44;
 }
 
 .cta-section .dreamit-section-content-text p {
-  color: rgba(255, 255, 255, 0.8);
+  color: #1e3a5f;
 }
 
 .cta-buttons {
@@ -9915,7 +9942,7 @@ div#particles .slider-area.style-five:before {
 
 /* Product Hero Section */
 .product-hero-section {
-  background: linear-gradient(135deg, #0f1033 0%, #1a1a4a 100%);
+  background: #fff;
 }
 
 .product-badge {
@@ -9932,14 +9959,14 @@ div#particles .slider-area.style-five:before {
 .product-hero-content h1 {
   font-size: 42px;
   font-weight: 700;
-  color: #fff;
+  color: #0a1f44;
   margin-bottom: 20px;
   line-height: 1.2;
 }
 
 .product-hero-content p {
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
+  color: #1e3a5f;
   line-height: 1.7;
 }
 
@@ -9949,8 +9976,15 @@ div#particles .slider-area.style-five:before {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 /* Trading Section */
@@ -9961,7 +9995,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .trading-content ul.trading-features li {
-  color: rgba(255, 255, 255, 0.9);
+  color: #1e3a5f;
   font-size: 16px;
   padding: 10px 0;
   display: flex;
@@ -9976,11 +10010,11 @@ div#particles .slider-area.style-five:before {
 
 /* Card Types Section (KaviPay) */
 .card-type-box {
-  background: rgba(255, 255, 255, 0.05);
+  background: #fff;
   border-radius: 20px;
   padding: 40px 30px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e0e0e0;
   transition: all 0.3s ease;
   height: 100%;
 }
@@ -9988,11 +10022,12 @@ div#particles .slider-area.style-five:before {
 .card-type-box:hover {
   transform: translateY(-10px);
   border-color: #37a3fe;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .card-type-box.featured {
   border-color: #37a3fe;
-  background: rgba(55, 163, 254, 0.1);
+  background: rgba(55, 163, 254, 0.05);
 }
 
 .card-type-icon {
@@ -10012,7 +10047,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .card-type-box h3 {
-  color: #fff;
+  color: #0a1f44 !important;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -10026,7 +10061,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .card-features li {
-  color: rgba(255, 255, 255, 0.8);
+  color: #1e3a5f;
   font-size: 15px;
   padding: 10px 0;
   display: flex;
@@ -10073,17 +10108,17 @@ div#particles .slider-area.style-five:before {
 
 /* Use Cases Section (Virtual Card) */
 .use-case-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: #fff;
   border-radius: 15px;
   padding: 30px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e0e0e0;
   transition: all 0.3s ease;
 }
 
 .use-case-card:hover {
   transform: translateY(-5px);
   border-color: #37a3fe;
-  background: rgba(55, 163, 254, 0.1);
+  background: rgba(55, 163, 254, 0.05);
 }
 
 .use-case-icon {
@@ -10103,7 +10138,7 @@ div#particles .slider-area.style-five:before {
 }
 
 .use-case-card h5 {
-  color: #fff;
+  color: #0a1f44 !important;
   font-size: 14px;
   font-weight: 600;
   margin: 0;
@@ -10298,7 +10333,7 @@ div#particles .slider-area.style-five:before {
 .faq-category-title {
   font-size: 24px;
   font-weight: 700;
-  color: #ffffff;
+  color: #0a1f44;
   margin-bottom: 30px;
   padding-bottom: 15px;
   border-bottom: 2px solid #37a3fe;

@@ -200,7 +200,7 @@ const footerHTML = `
                 <div class="row upper11 mt-50 align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="footer-copyright-text">
-                            <p class="text-white" data-translate="copyright">
+                            <p class="text-dark" data-translate="copyright">
                                 Copyright © PloutosLabs. All rights reserved.
                             </p>
                         </div>
@@ -401,6 +401,21 @@ function loadFooter() {
     }
 }
 
+// Function to initialize sticky header functionality
+function initStickyHeader() {
+    const stickyHeader = document.getElementById('sticky-header');
+    if (stickyHeader) {
+        window.addEventListener('scroll', function () {
+            const scroll = window.scrollY || document.documentElement.scrollTop;
+            if (scroll < 100) {
+                stickyHeader.classList.remove('sticky-nav');
+            } else {
+                stickyHeader.classList.add('sticky-nav');
+            }
+        });
+    }
+}
+
 // Function to initialize scroll-to-top functionality
 function initScrollToTop() {
     // Show/hide button on scroll
@@ -423,6 +438,9 @@ function initScrollToTop() {
 document.addEventListener('DOMContentLoaded', function () {
     loadHeader();
     loadFooter();
+
+    // Initialize sticky header after header is loaded
+    setTimeout(initStickyHeader, 100);
 
     // Initialize scroll-to-top after footer is loaded
     setTimeout(initScrollToTop, 100);
